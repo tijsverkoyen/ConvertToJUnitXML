@@ -7,5 +7,5 @@ various input formats to JUnit XML.
 Usage
 -----
 
-    composer install xxx
-    php xxx convert:xxx
+    composer require tijsverkoyen/convert-to-junit-xml
+    php convert-to-junit-xml help

@@ -12,7 +12,7 @@
         "symfony/console": "^4.2"
     },
     "bin": [
-        "convert-to-junit.xml"
+        "convert-to-junit-xml"
     ],
     "require-dev": {
         "symfony/phpunit-bridge": "^4.2",
