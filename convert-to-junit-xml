@@ -4,6 +4,10 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
+use TijsVerkoyen\ConvertToJUnitXML\ConvertToJUnitXML;
 
-$application = new Application('Convert to JUnit XML');
+$application = new Application(
+    'Convert to JUnit XML',
+    ConvertToJUnitXML::VERSION
+);
 $application->run();
