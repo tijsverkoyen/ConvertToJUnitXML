@@ -13,5 +13,14 @@
     },
     "bin": [
         "convert-to-junit.xml"
-    ]
+    ],
+    "require-dev": {
+        "symfony/phpunit-bridge": "^4.2",
+        "symfony/var-dumper": "^4.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "TijsVerkoyen\\ConvertToJUnitXML\\": "src"
+        }
+    }
 }

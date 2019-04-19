@@ -4,6 +4,8 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
+use TijsVerkoyen\ConvertToJUnitXML\Command\ConvertFromNPMAuditCommand;
 
 $application = new Application('Convert to JUnit XML');
+$application->add(new ConvertFromNPMAuditCommand());
 $application->run();
