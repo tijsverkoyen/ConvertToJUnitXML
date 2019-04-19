@@ -13,10 +13,5 @@
     },
     "bin": [
         "convert-to-junit.xml"
-    ],
-    "autoload": {
-        "psr-4": {
-            "TijsVerkoyen\\ConvertToJUnitXML\\": "src"
-        }
-    }
+    ]
 }
