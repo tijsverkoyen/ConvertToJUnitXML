@@ -1,14 +1,17 @@
 {
     "name": "tijsverkoyen/convert-to-junit-xml",
     "description": "A tool to format various inputs into JUnit XML",
-    "require": {
-        "symfony/console": "^4.2"
-    },
     "license": "MIT",
     "authors": [
         {
             "name": "Tijs Verkoyen",
             "email": "convert_to_junit_xml@verkoyen.eu"
         }
+    ],
+    "require": {
+        "symfony/console": "^4.2"
+    },
+    "bin": [
+        "convert-to-junit.xml"
     ]
 }
