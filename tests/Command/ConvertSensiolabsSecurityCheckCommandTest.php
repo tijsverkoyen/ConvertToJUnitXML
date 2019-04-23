@@ -42,4 +42,17 @@ class ConvertSensiolabsSecurityCheckCommandTest extends TestCase
         );
         $this->assertEquals(0, $this->commandTester->getStatusCode());
     }
+
+    public function testExecuteReturnErrorCode()
+    {
+        $this->commandTester->execute(
+            [
+                'input' => file_get_contents(
+                    __DIR__ . '/../assets/sensiolabs-security-check/multiple.json'
+                ),
+            ]
+        );
+
+        $this->assertEquals(1, $this->commandTester->getStatusCode());
+    }
 }
