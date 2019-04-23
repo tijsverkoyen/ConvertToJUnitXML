@@ -7,16 +7,30 @@ function includeIfExists($file)
         return include $file;
     }
 }
-if ((!$loader = includeIfExists(__DIR__.'/vendor/autoload.php')) && (!$loader = includeIfExists(__DIR__.'/../../autoload.php'))) {
-    die('You must set up the project dependencies, run the following commands:'.PHP_EOL.
-        'curl -sS https://getcomposer.org/installer | php'.PHP_EOL.
-        'php composer.phar install'.PHP_EOL);
+
+if ((!$loader = includeIfExists(
+        __DIR__ . '/vendor/autoload.php'
+    )) && (!$loader = includeIfExists(__DIR__ . '/../../autoload.php'))) {
+    die(
+        'You must set up the project dependencies, run the following commands:' . PHP_EOL .
+        'curl -sS https://getcomposer.org/installer | php' . PHP_EOL .
+        'php composer.phar install' . PHP_EOL
+    );
 }
 
 use Symfony\Component\Console\Application;
 use TijsVerkoyen\ConvertToJUnitXML\Command\ConvertNpmAuditCommand;
-use TijsVerkoyen\ConvertToJUnitXML\Converters\Npm\Audit;
+use TijsVerkoyen\ConvertToJUnitXML\Command\ConvertSensiolabsSecurityCheckCommand;
 
 $application = new Application('Convert to JUnit XML');
-$application->add(new ConvertNpmAuditCommand(new Audit()));
+$application->add(
+    new ConvertNpmAuditCommand(
+        new \TijsVerkoyen\ConvertToJUnitXML\Converters\Npm\Audit()
+    )
+);
+$application->add(
+    new ConvertSensiolabsSecurityCheckCommand(
+        new \TijsVerkoyen\ConvertToJUnitXML\Converters\Sensiolabs\SecurityCheck()
+    )
+);
 $application->run();
