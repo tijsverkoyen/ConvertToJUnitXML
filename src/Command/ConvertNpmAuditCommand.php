@@ -38,10 +38,14 @@ class ConvertNpmAuditCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->write(
-            $this->converter->convert(
-                $input->getArgument('input')
-            )
+        $jUnitReport = $this->converter->convert(
+            $input->getArgument('input')
         );
+
+        $output->write($jUnitReport->__toString());
+
+        if (!$jUnitReport->isEmpty()) {
+            return 1;
+        }
     }
 }
