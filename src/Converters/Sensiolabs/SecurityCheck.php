@@ -1,42 +1,42 @@
 <?php
 
-namespace TijsVerkoyen\ConvertToJUnitXML\Converters\Npm;
+namespace TijsVerkoyen\ConvertToJUnitXML\Converters\Sensiolabs;
 
 use TijsVerkoyen\ConvertToJUnitXML\Converters\ConverterInterface;
-use TijsVerkoyen\ConvertToJUnitXML\Converters\Npm\Report\Report;
+use TijsVerkoyen\ConvertToJUnitXML\Converters\Sensiolabs\Report\Report;
 use TijsVerkoyen\ConvertToJUnitXML\JUnit\Failure;
 use TijsVerkoyen\ConvertToJUnitXML\JUnit\JUnit;
 use TijsVerkoyen\ConvertToJUnitXML\JUnit\TestCase;
 use TijsVerkoyen\ConvertToJUnitXML\JUnit\TestSuite;
 
-class Audit implements ConverterInterface
+class SecurityCheck implements ConverterInterface
 {
     public function convert(string $input): JUnit
     {
         $report = Report::fromString($input);
-        $advisories = $report->getAdvisories();
 
         $jUnit = new JUnit();
 
-        if (empty($advisories)) {
+        if (!$report->hasPackages()) {
             return $jUnit;
         }
 
-        $testSuite = new TestSuite('npm audit');
+        $testSuite = new TestSuite('security-checker security:check');
 
-        foreach ($report->getAdvisories() as $advisory) {
+        foreach ($report->getPackages() as $package) {
             $testCase = new TestCase(
                 sprintf(
-                    '%1$s has vulnerabilities',
-                    $advisory->getPackage()
+                    '%1$s (%2$s) has vulnerabilities',
+                    $package->getName(),
+                    $package->getVersion()
                 )
             );
 
-            foreach ($advisory->getPaths() as $index => $path) {
+            foreach ($package->getAdvisories() as $advisory) {
                 $testCase->addFailure(
                     new Failure(
                         'error',
-                        $advisory->getMessage($index)
+                        $advisory->getMessage()
                     )
                 );
             }

@@ -16,6 +16,9 @@ class Report
         $this->advisories = $advisories;
     }
 
+    /**
+     * @return Advisory[]
+     */
     public function getAdvisories(): array
     {
         return $this->advisories;

@@ -12,7 +12,7 @@ class ReportTest extends TestCase
     {
         $report = Report::fromString(
             file_get_contents(
-                __DIR__ . '/../../assets/npm-audit/multiple.json'
+                __DIR__ . '/../../../assets/npm-audit/multiple.json'
             )
         );
 
@@ -23,7 +23,7 @@ class ReportTest extends TestCase
     {
         $report = Report::fromString(
             file_get_contents(
-                __DIR__ . '/../../assets/npm-audit/empty.json'
+                __DIR__ . '/../../../assets/npm-audit/empty.json'
             )
         );
 

@@ -1,0 +1,87 @@
+{
+    "symfony/polyfill-php55": {
+        "version": "v1.4.0",
+        "advisories": [
+            {
+                "title": "Possible DOS attack with long user-submitted passwords (correct fix for CVE-2013-5958)",
+                "link": "https://github.com/symfony/polyfill/pull/155",
+                "cve": "CVE-2013-5958"
+            }
+        ]
+    },
+    "symfony/symfony": {
+        "version": "v3.3.6",
+        "advisories": [
+            {
+                "title": "CVE-2017-16652: Open redirect vulnerability on security handlers",
+                "link": "https://symfony.com/cve-2017-16652",
+                "cve": "CVE-2017-16652"
+            },
+            {
+                "title": "CVE-2017-16653: CSRF protection does not use different tokens for HTTP and HTTPS",
+                "link": "https://symfony.com/cve-2017-16653",
+                "cve": "CVE-2017-16653"
+            },
+            {
+                "title": "CVE-2017-16654: Intl bundle readers breaking out of paths",
+                "link": "https://symfony.com/cve-2017-16654",
+                "cve": "CVE-2017-16654"
+            },
+            {
+                "title": "CVE-2017-16790: Ensure that submitted data are uploaded files",
+                "link": "https://symfony.com/cve-2017-16790",
+                "cve": "CVE-2017-16790"
+            },
+            {
+                "title": "CVE-2018-11385: Session Fixation Issue for Guard Authentication",
+                "link": "https://symfony.com/cve-2018-11385",
+                "cve": "CVE-2018-11385"
+            },
+            {
+                "title": "CVE-2018-11386: Denial of service when using PDOSessionHandler",
+                "link": "https://symfony.com/cve-2018-11386",
+                "cve": "CVE-2018-11386"
+            },
+            {
+                "title": "CVE-2018-11406: CSRF Token Fixation",
+                "link": "https://symfony.com/cve-2018-11406",
+                "cve": "CVE-2018-11406"
+            },
+            {
+                "title": "CVE-2018-11407: Unauthorized access on a misconfigured LDAP server when using an empty password",
+                "link": "https://symfony.com/cve-2018-11407",
+                "cve": "CVE-2018-11407"
+            },
+            {
+                "title": "CVE-2018-11408: Open redirect vulnerability on security handlers",
+                "link": "https://symfony.com/cve-2018-11408",
+                "cve": "CVE-2018-11408"
+            },
+            {
+                "title": "CVE-2018-14773: Remove support for legacy and risky HTTP headers",
+                "link": "https://symfony.com/blog/cve-2018-14773-remove-support-for-legacy-and-risky-http-headers",
+                "cve": "CVE-2018-14773"
+            },
+            {
+                "title": "CVE-2018-19789: Temporary uploaded file path disclosure",
+                "link": "https://symfony.com/cve-2018-19789",
+                "cve": "CVE-2018-19789"
+            },
+            {
+                "title": "CVE-2018-19790: Open Redirect Vulnerability on login",
+                "link": "https://symfony.com/cve-2018-19790",
+                "cve": "CVE-2018-19790"
+            }
+        ]
+    },
+    "twig/twig": {
+        "version": "v2.4.3",
+        "advisories": [
+            {
+                "title": "Sandbox Information Disclosure",
+                "link": "https://symfony.com/blog/twig-sandbox-information-disclosure",
+                "cve": ""
+            }
+        ]
+    }
+}
