@@ -38,5 +38,19 @@ class ConvertNpmAuditCommandTest extends TestCase
 ',
             $this->commandTester->getDisplay()
         );
+        $this->assertEquals(0, $this->commandTester->getStatusCode());
+    }
+
+    public function testExecuteReturnErrorCode()
+    {
+        $this->commandTester->execute(
+            [
+                'input' => file_get_contents(
+                    __DIR__ . '/../assets/npm-audit/multiple.json'
+                ),
+            ]
+        );
+
+        $this->assertEquals(1, $this->commandTester->getStatusCode());
     }
 }

@@ -15,6 +15,11 @@ class JUnit
         return $this;
     }
 
+    public function isEmpty(): bool
+    {
+        return empty($this->testSuites);
+    }
+
     public function toXML(): \DOMDocument
     {
         $document = new \DOMDocument('1.0', 'utf-8');
