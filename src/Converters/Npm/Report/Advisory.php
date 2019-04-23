@@ -79,10 +79,10 @@ class Advisory
             $this->package
         );
 
-        if ($this->recommendation !== '') {
+        if ($this->recommendation !== null) {
             $message .= ' ' . $this->recommendation;
         }
-        $message .= ' ' . $this->url;
+        $message .= ' More information on: ' . $this->url;
 
         return $message;
     }

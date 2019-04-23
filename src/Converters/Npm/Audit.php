@@ -27,8 +27,7 @@ class Audit implements ConverterInterface
         foreach ($report->getAdvisories() as $advisory) {
             $testCase = new TestCase(
                 sprintf(
-                    '%1$s in package: %2$s',
-                    $advisory->getTitle(),
+                    '%1$s has vulnerabilities',
                     $advisory->getPackage()
                 )
             );

@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\TijsVerkoyen\ConvertToJUnitXML\Converters\Npm\Report;
+namespace tests\TijsVerkoyen\ConvertToJUnitXML\Converters\Npm;
 
 use PHPUnit\Framework\TestCase;
 use TijsVerkoyen\ConvertToJUnitXML\Converters\Npm\Audit;
@@ -12,7 +12,7 @@ class AuditTest extends TestCase
         $audit = new Audit();
         $jUnit = $audit->convert(
             file_get_contents(
-                __DIR__ . '/../assets/npm-audit/multiple.json'
+                __DIR__ . '/../../assets/npm-audit/multiple.json'
             )
         );
 
@@ -25,7 +25,7 @@ class AuditTest extends TestCase
         $audit = new Audit();
         $jUnit = $audit->convert(
             file_get_contents(
-                __DIR__ . '/../assets/npm-audit/empty.json'
+                __DIR__ . '/../../assets/npm-audit/empty.json'
             )
         );
 
