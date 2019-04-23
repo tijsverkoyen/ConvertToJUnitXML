@@ -49,6 +49,7 @@ class Advisory
     ) {
         $this->title = $title;
         $this->package = $package;
+        $this->recommendation = $recommendation;
         $this->severity = $severity;
         $this->url = $url;
         $this->paths = $paths;

@@ -28,7 +28,7 @@ class AdvisoryTest extends TestCase
         $advisory = Advisory::fromJson($json);
 
         $this->assertEquals(
-            '[severity] title in path 1, dependency of module_name. More information on: url',
+            '[severity] title in path 1, dependency of module_name. recommendation More information on: url',
             $advisory->getMessage(0)
         );
         $this->assertEquals(
