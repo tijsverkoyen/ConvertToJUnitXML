@@ -24,9 +24,6 @@ class TestCaseTest extends TestCase
 
         $this->assertTrue($node->hasAttribute('failures'));
         $this->assertEquals(0, $node->getAttribute('failures'));
-
-        $this->assertTrue($node->hasAttribute('tests'));
-        $this->assertEquals(0, $node->getAttribute('tests'));
     }
 
     public function testXMLGenerationWithFailures(): void
@@ -48,8 +45,5 @@ class TestCaseTest extends TestCase
 
         $this->assertTrue($node->hasAttribute('failures'));
         $this->assertEquals(2, $node->getAttribute('failures'));
-
-        $this->assertTrue($node->hasAttribute('tests'));
-        $this->assertEquals(2, $node->getAttribute('tests'));
     }
 }

@@ -34,7 +34,9 @@ class ConvertNpmAuditCommandTest extends TestCase
 
         $this->assertEquals(
             '<?xml version="1.0" encoding="utf-8"?>
-<testsuites/>
+<testsuites>
+  <testsuite name="npm audit" failures="0"/>
+</testsuites>
 ',
             $this->commandTester->getDisplay()
         );

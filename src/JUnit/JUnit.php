@@ -5,7 +5,7 @@ namespace TijsVerkoyen\ConvertToJUnitXML\JUnit;
 class JUnit
 {
     /**
-     * @var array
+     * @var TestSuite[]
      */
     private $testSuites = [];
 
@@ -15,9 +15,19 @@ class JUnit
         return $this;
     }
 
-    public function isEmpty(): bool
+    public function hasFailures(): bool
     {
-        return empty($this->testSuites);
+        if (empty($this->testSuites)) {
+            return false;
+        }
+
+        foreach ($this->testSuites as $testSuite) {
+            if ($testSuite->getFailureCount() > 0) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function toXML(): \DOMDocument

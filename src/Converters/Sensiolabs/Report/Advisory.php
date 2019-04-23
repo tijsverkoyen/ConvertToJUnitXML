@@ -14,33 +14,27 @@ class Advisory
      */
     private $link;
 
-    /**
-     * @var string
-     */
-    private $cve;
-
-    public function __construct(string $title, string $link, string $cve)
+    public function __construct(string $title, string $link)
     {
         $this->title = $title;
         $this->link = $link;
-        $this->cve = $cve;
     }
 
-    public function getMessage(): string
+    public function getTitle(): string
     {
-        return sprintf(
-            '%1$s. More information on: %2$s',
-            $this->title,
-            $this->link
-        );
+        return $this->title;
+    }
+
+    public function getLink(): string
+    {
+        return $this->link;
     }
 
     public static function fromJson(\stdClass $json): Advisory
     {
         return new Advisory(
             $json->title,
-            $json->link,
-            $json->cve
+            $json->link
         );
     }
 }

@@ -44,7 +44,7 @@ class ConvertNpmAuditCommand extends Command
 
         $output->write($jUnitReport->__toString());
 
-        if (!$jUnitReport->isEmpty()) {
+        if ($jUnitReport->hasFailures()) {
             return 1;
         }
     }

@@ -14,13 +14,7 @@ class SecurityCheck implements ConverterInterface
     public function convert(string $input): JUnit
     {
         $report = Report::fromString($input);
-
         $jUnit = new JUnit();
-
-        if (!$report->hasPackages()) {
-            return $jUnit;
-        }
-
         $testSuite = new TestSuite('security-checker security:check');
 
         foreach ($report->getPackages() as $package) {
@@ -36,7 +30,12 @@ class SecurityCheck implements ConverterInterface
                 $testCase->addFailure(
                     new Failure(
                         'error',
-                        $advisory->getMessage()
+                        $advisory->getTitle(),
+                        sprintf(
+                            '%1$s' . "\n" . 'More information on: %2$s',
+                            $advisory->getTitle(),
+                            $advisory->getLink()
+                        )
                     )
                 );
             }

@@ -36,7 +36,9 @@ class ConvertSensiolabsSecurityCheckCommandTest extends TestCase
 
         $this->assertEquals(
             '<?xml version="1.0" encoding="utf-8"?>
-<testsuites/>
+<testsuites>
+  <testsuite name="security-checker security:check" failures="0"/>
+</testsuites>
 ',
             $this->commandTester->getDisplay()
         );

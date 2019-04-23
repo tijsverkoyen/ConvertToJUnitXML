@@ -12,13 +12,10 @@ class AdvisoryTest extends TestCase
         $json = new \stdClass();
         $json->title = 'title';
         $json->link = 'link';
-        $json->cve = 'cve';
 
         $advisory = Advisory::fromJson($json);
 
-        $this->assertEquals(
-            'title. More information on: link',
-            $advisory->getMessage()
-        );
+        $this->assertEquals('title', $advisory->getTitle());
+        $this->assertEquals('link', $advisory->getLink());
     }
 }

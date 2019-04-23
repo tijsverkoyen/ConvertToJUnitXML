@@ -35,7 +35,6 @@ class TestCase
         $node = $document->createElement('testcase');
         $node->setAttribute('name', $this->name);
         $node->setAttribute('failures', count($this->failures));
-        $node->setAttribute('tests', count($this->failures));
 
         foreach ($this->failures as $failure) {
             $node->appendChild($failure->toXML($document));

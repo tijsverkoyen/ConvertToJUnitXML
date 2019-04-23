@@ -7,11 +7,6 @@ class Advisory
     /**
      * @var string
      */
-    private $id;
-
-    /**
-     * @var string
-     */
     private $title;
 
     /**
@@ -65,27 +60,24 @@ class Advisory
         return $this->package;
     }
 
+    public function getRecommendation(): string
+    {
+        return $this->recommendation;
+    }
+
+    public function getSeverity(): string
+    {
+        return $this->severity;
+    }
+
+    public function getUrl(): string
+    {
+        return $this->url;
+    }
+
     public function getPaths(): array
     {
         return $this->paths;
-    }
-
-    public function getMessage(int $pathIndex): string
-    {
-        $message = sprintf(
-            '[%1$s] %2$s in %3$s, dependency of %4$s.',
-            $this->severity,
-            $this->title,
-            $this->paths[$pathIndex],
-            $this->package
-        );
-
-        if ($this->recommendation !== null) {
-            $message .= ' ' . $this->recommendation;
-        }
-        $message .= ' More information on: ' . $this->url;
-
-        return $message;
     }
 
     public static function fromJson(\stdClass $json): Advisory

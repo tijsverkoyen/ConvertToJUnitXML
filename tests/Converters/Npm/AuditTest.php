@@ -30,6 +30,7 @@ class AuditTest extends TestCase
         );
 
         $xml = $jUnit->toXML();
-        $this->assertCount(0, $xml->getElementsByTagName('testsuite'));
+        $this->assertCount(1, $xml->getElementsByTagName('testsuite'));
+        $this->assertCount(0, $xml->getElementsByTagName('testcase'));
     }
 }

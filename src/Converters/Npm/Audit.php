@@ -3,6 +3,7 @@
 namespace TijsVerkoyen\ConvertToJUnitXML\Converters\Npm;
 
 use TijsVerkoyen\ConvertToJUnitXML\Converters\ConverterInterface;
+use TijsVerkoyen\ConvertToJUnitXML\Converters\Npm\Report\Advisory;
 use TijsVerkoyen\ConvertToJUnitXML\Converters\Npm\Report\Report;
 use TijsVerkoyen\ConvertToJUnitXML\JUnit\Failure;
 use TijsVerkoyen\ConvertToJUnitXML\JUnit\JUnit;
@@ -14,14 +15,7 @@ class Audit implements ConverterInterface
     public function convert(string $input): JUnit
     {
         $report = Report::fromString($input);
-        $advisories = $report->getAdvisories();
-
         $jUnit = new JUnit();
-
-        if (empty($advisories)) {
-            return $jUnit;
-        }
-
         $testSuite = new TestSuite('npm audit');
 
         foreach ($report->getAdvisories() as $advisory) {
@@ -32,14 +26,13 @@ class Audit implements ConverterInterface
                 )
             );
 
-            foreach ($advisory->getPaths() as $index => $path) {
-                $testCase->addFailure(
-                    new Failure(
-                        'error',
-                        $advisory->getMessage($index)
-                    )
-                );
-            }
+            $testCase->addFailure(
+                new Failure(
+                    'warning',
+                    $advisory->getTitle(),
+                    $this->buildDescription($advisory)
+                )
+            );
 
             $testSuite->addTestCase($testCase);
         }
@@ -47,5 +40,27 @@ class Audit implements ConverterInterface
         $jUnit->addTestSuite($testSuite);
 
         return $jUnit;
+    }
+
+    private function buildDescription(Advisory $advisory): string
+    {
+        $description = sprintf(
+            '[%1$s] %2$s in package: %3$s',
+            $advisory->getSeverity(),
+            $advisory->getTitle(),
+            $advisory->getPackage()
+        );
+
+        if (!empty($advisory->getPaths())) {
+            $description .= "\n" . 'Infected paths:';
+            foreach ($advisory->getPaths() as $path) {
+                $description .= "\n" . '* ' . $path;
+            }
+            $description .= "\n";
+        }
+
+        $description .= "\n" . 'More information on: ' . $advisory->getUrl();
+
+        return $description;
     }
 }
