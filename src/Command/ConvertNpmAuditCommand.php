@@ -31,15 +31,30 @@ class ConvertNpmAuditCommand extends Command
             )
             ->addArgument(
                 'input',
-                InputArgument::REQUIRED,
+                InputArgument::OPTIONAL,
                 "The JSON to convert"
             );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        if ($input->hasArgument('input')
+            && $input->getArgument('input') !== null
+            && $input->getArgument('input') !== ''
+        ) {
+            $inputContent = $input->getArgument('input');
+        } else if (0 !== ftell(STDIN)) {
+            return 1;
+        } else {
+            $inputContent = '';
+
+            while (!feof(STDIN)) {
+                $inputContent .= fread(STDIN, 1024);
+            }
+        }
+
         $jUnitReport = $this->converter->convert(
-            $input->getArgument('input')
+            $inputContent
         );
 
         $output->write($jUnitReport->__toString());
