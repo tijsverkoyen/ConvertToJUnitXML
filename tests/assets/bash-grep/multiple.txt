@@ -1,0 +1,3 @@
+this/is/a/foo/bar/path:13:   line 13 contains a match
+this/is/a/foo/bar/path:37:   line 37 contains a match
+this/is/an/other/path:13:   line 13 contains a match

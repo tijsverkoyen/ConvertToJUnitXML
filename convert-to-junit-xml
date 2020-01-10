@@ -24,6 +24,11 @@ use TijsVerkoyen\ConvertToJUnitXML\Command\ConvertSensiolabsSecurityCheckCommand
 
 $application = new Application('Convert to JUnit XML');
 $application->add(
+  new \TijsVerkoyen\ConvertToJUnitXML\Command\ConvertBashGrepCommand(
+      new \TijsVerkoyen\ConvertToJUnitXML\Converters\Bash\Grep()
+  )
+);
+$application->add(
     new ConvertNpmAuditCommand(
         new \TijsVerkoyen\ConvertToJUnitXML\Converters\Npm\Audit()
     )
