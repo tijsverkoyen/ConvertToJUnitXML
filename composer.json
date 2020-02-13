@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "symfony/console": "^4.2"
+        "symfony/console": "^4.2|^5.0"
     },
     "bin": [
         "convert-to-junit-xml"
