@@ -47,5 +47,7 @@ class ConvertBashGrepCommand extends Command
         if ($jUnitReport->hasFailures()) {
             return 1;
         }
+
+        return 0;
     }
 }
