@@ -21,12 +21,13 @@ if ((!$loader = includeIfExists(
 use Symfony\Component\Console\Application;
 use TijsVerkoyen\ConvertToJUnitXML\Command\ConvertNpmAuditCommand;
 use TijsVerkoyen\ConvertToJUnitXML\Command\ConvertSensiolabsSecurityCheckCommand;
+use TijsVerkoyen\ConvertToJUnitXML\Command\ConvertStylelintCommand;
 
 $application = new Application('Convert to JUnit XML');
 $application->add(
-  new \TijsVerkoyen\ConvertToJUnitXML\Command\ConvertBashGrepCommand(
-      new \TijsVerkoyen\ConvertToJUnitXML\Converters\Bash\Grep()
-  )
+    new \TijsVerkoyen\ConvertToJUnitXML\Command\ConvertBashGrepCommand(
+        new \TijsVerkoyen\ConvertToJUnitXML\Converters\Bash\Grep()
+    )
 );
 $application->add(
     new ConvertNpmAuditCommand(
@@ -36,6 +37,11 @@ $application->add(
 $application->add(
     new ConvertSensiolabsSecurityCheckCommand(
         new \TijsVerkoyen\ConvertToJUnitXML\Converters\Sensiolabs\SecurityCheck()
+    )
+);
+$application->add(
+    new ConvertStylelintCommand(
+        new \TijsVerkoyen\ConvertToJUnitXML\Converters\Stylelint\Stylelint()
     )
 );
 $application->run();
