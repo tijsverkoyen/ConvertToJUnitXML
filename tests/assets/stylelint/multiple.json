@@ -1,0 +1,932 @@
+[
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/README.md",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": false,
+    "warnings": []
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/composer.json",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 6,
+        "column": 25,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/composer.lock",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 7692,
+        "column": 25,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/deploy.php",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": false,
+    "warnings": []
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/docker-compose.override.yml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 1,
+        "column": 10,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/docker-compose.yml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 1,
+        "column": 10,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/mekker.json",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 1,
+        "column": 1,
+        "rule": "no-empty-source",
+        "severity": "error",
+        "text": "Unexpected empty source (no-empty-source)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/package-lock.json",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 11,
+        "column": 37,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Unknown word (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/package.json",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 4,
+        "column": 28,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/php.ini",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 1,
+        "column": 1,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Unknown word (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/phpcs.xml.dist",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": false,
+    "warnings": []
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/phpstan.neon.dist",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/symfony.lock",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 3,
+        "column": 20,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Unknown word (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/webpack.config.js",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": false,
+    "warnings": []
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/bin/console",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 1,
+        "column": 1,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Unknown word (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/bootstrap.php",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": false,
+    "warnings": []
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/bundles.php",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": false,
+    "warnings": []
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/routes.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 1,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/services.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": false,
+    "warnings": []
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/public/index.php",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": false,
+    "warnings": []
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/src/Kernel.php",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": false,
+    "warnings": []
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/templates/base.html.twig",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": false,
+    "warnings": []
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/assets/css/app.scss",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": false,
+    "warnings": []
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/assets/js/app.js",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": false,
+    "warnings": []
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/assets.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/cache.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/doctrine.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/doctrine_migrations.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/framework.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/routing.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/security.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 22,
+        "column": 21,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/security_checker.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/sentry.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/translation.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/twig.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/webpack_encore.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 19,
+        "column": 14,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Unknown word (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/routes/annotations.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 4,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/routes/fos_js_routing.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/dev/debug.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 3,
+        "column": 52,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/dev/easy_log_handler.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 21,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/dev/monolog.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/dev/web_profiler.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [
+      {
+        "type": "warning",
+        "text": "Cannot parse selector",
+        "line": 1,
+        "column": 1,
+        "node": {
+          "raws": {
+            "before": "",
+            "between": " ",
+            "semicolon": false,
+            "after": " "
+          },
+          "type": "rule",
+          "nodes": [
+            {
+              "raws": {
+                "before": " ",
+                "between": ": "
+              },
+              "type": "decl",
+              "source": {
+                "start": {
+                  "line": 6,
+                  "column": 17
+                },
+                "input": {
+                  "css": "web_profiler:\n    toolbar: true\n    intercept_redirects: false\n\nframework:\n    profiler: { only_exceptions: false }\n",
+                  "hasBOM": false,
+                  "file": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/dev/web_profiler.yaml"
+                },
+                "end": {
+                  "line": 6,
+                  "column": 38
+                }
+              },
+              "prop": "only_exceptions",
+              "value": "false"
+            }
+          ],
+          "source": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "input": {
+              "css": "web_profiler:\n    toolbar: true\n    intercept_redirects: false\n\nframework:\n    profiler: { only_exceptions: false }\n",
+              "hasBOM": false,
+              "file": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/dev/web_profiler.yaml"
+            },
+            "end": {
+              "line": 6,
+              "column": 40
+            }
+          },
+          "selector": "web_profiler:\n    toolbar: true\n    intercept_redirects: false\n\nframework:\n    profiler:",
+          "lastEach": 110,
+          "indexes": {}
+        },
+        "stylelintType": "parseError"
+      }
+    ],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 6,
+        "column": 38,
+        "rule": "declaration-block-trailing-semicolon",
+        "severity": "error",
+        "text": "Expected a trailing semicolon (declaration-block-trailing-semicolon)"
+      },
+      {
+        "line": 1,
+        "column": 1,
+        "rule": "selector-max-empty-lines",
+        "severity": "error",
+        "text": "Expected no more than 0 empty lines (selector-max-empty-lines)"
+      },
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "indentation",
+        "severity": "error",
+        "text": "Expected indentation of 0 spaces (indentation)"
+      },
+      {
+        "line": 3,
+        "column": 5,
+        "rule": "indentation",
+        "severity": "error",
+        "text": "Expected indentation of 0 spaces (indentation)"
+      },
+      {
+        "line": 6,
+        "column": 5,
+        "rule": "indentation",
+        "severity": "error",
+        "text": "Expected indentation of 0 spaces (indentation)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/prod/doctrine.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/prod/monolog.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/prod/routing.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/prod/webpack_encore.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 50,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Unclosed string (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/test/framework.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/test/monolog.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/test/twig.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/test/web_profiler.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [
+      {
+        "type": "warning",
+        "text": "Cannot parse selector",
+        "line": 1,
+        "column": 1,
+        "node": {
+          "raws": {
+            "before": "",
+            "between": " ",
+            "semicolon": false,
+            "after": " "
+          },
+          "type": "rule",
+          "nodes": [
+            {
+              "raws": {
+                "before": " ",
+                "between": ": "
+              },
+              "type": "decl",
+              "source": {
+                "start": {
+                  "line": 6,
+                  "column": 17
+                },
+                "input": {
+                  "css": "web_profiler:\n    toolbar: false\n    intercept_redirects: false\n\nframework:\n    profiler: { collect: false }\n",
+                  "hasBOM": false,
+                  "file": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/test/web_profiler.yaml"
+                },
+                "end": {
+                  "line": 6,
+                  "column": 30
+                }
+              },
+              "prop": "collect",
+              "value": "false"
+            }
+          ],
+          "source": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "input": {
+              "css": "web_profiler:\n    toolbar: false\n    intercept_redirects: false\n\nframework:\n    profiler: { collect: false }\n",
+              "hasBOM": false,
+              "file": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/test/web_profiler.yaml"
+            },
+            "end": {
+              "line": 6,
+              "column": 32
+            }
+          },
+          "selector": "web_profiler:\n    toolbar: false\n    intercept_redirects: false\n\nframework:\n    profiler:",
+          "lastEach": 110,
+          "indexes": {}
+        },
+        "stylelintType": "parseError"
+      }
+    ],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 6,
+        "column": 30,
+        "rule": "declaration-block-trailing-semicolon",
+        "severity": "error",
+        "text": "Expected a trailing semicolon (declaration-block-trailing-semicolon)"
+      },
+      {
+        "line": 1,
+        "column": 1,
+        "rule": "selector-max-empty-lines",
+        "severity": "error",
+        "text": "Expected no more than 0 empty lines (selector-max-empty-lines)"
+      },
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "indentation",
+        "severity": "error",
+        "text": "Expected indentation of 0 spaces (indentation)"
+      },
+      {
+        "line": 3,
+        "column": 5,
+        "rule": "indentation",
+        "severity": "error",
+        "text": "Expected indentation of 0 spaces (indentation)"
+      },
+      {
+        "line": 6,
+        "column": 5,
+        "rule": "indentation",
+        "severity": "error",
+        "text": "Expected indentation of 0 spaces (indentation)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/packages/test/webpack_encore.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 1,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/routes/dev/framework.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  },
+  {
+    "source": "/Users/tijs/Sites/tijs/test-application-skeleton/config/routes/dev/web_profiler.yaml",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 2,
+        "column": 5,
+        "rule": "CssSyntaxError",
+        "severity": "error",
+        "text": "Missed semicolon (CssSyntaxError)"
+      }
+    ]
+  }
+]
