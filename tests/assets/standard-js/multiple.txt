@@ -1,0 +1,19 @@
+  /Users/tijs/Sites/tijs/test-application-skeleton/assets/js/app.js:9:25: Extra semicolon.
+  /Users/tijs/Sites/tijs/test-application-skeleton/assets/js/app.js:14:65: Extra semicolon.
+  /Users/tijs/Sites/tijs/test-application-skeleton/assets/js/app.js:16:1: Import in body of module; reorder to top.
+  /Users/tijs/Sites/tijs/test-application-skeleton/assets/js/app.js:18:1: Do not use 'new' for side effects.
+  /Users/tijs/Sites/tijs/test-application-skeleton/webpack.config.js:16:3: Expected space or tab after '//' in comment.
+  /Users/tijs/Sites/tijs/test-application-skeleton/webpack.config.js:28:3: Expected space or tab after '//' in comment.
+  /Users/tijs/Sites/tijs/test-application-skeleton/webpack.config.js:29:3: Expected space or tab after '//' in comment.
+  /Users/tijs/Sites/tijs/test-application-skeleton/webpack.config.js:60:1: Expected indentation of 0 spaces but found 2.
+  /Users/tijs/Sites/tijs/test-application-skeleton/webpack.config.js:61:1: Expected indentation of 0 spaces but found 2.
+  /Users/tijs/Sites/tijs/test-application-skeleton/webpack.config.js:61:3: Expected space or tab after '//' in comment.
+  /Users/tijs/Sites/tijs/test-application-skeleton/webpack.config.js:63:1: Expected indentation of 0 spaces but found 2.
+  /Users/tijs/Sites/tijs/test-application-skeleton/webpack.config.js:64:1: Expected indentation of 0 spaces but found 2.
+  /Users/tijs/Sites/tijs/test-application-skeleton/webpack.config.js:65:1: Expected indentation of 0 spaces but found 2.
+  /Users/tijs/Sites/tijs/test-application-skeleton/webpack.config.js:65:3: Expected space or tab after '//' in comment.
+  /Users/tijs/Sites/tijs/test-application-skeleton/webpack.config.js:71:3: Expected space or tab after '//' in comment.
+  /Users/tijs/Sites/tijs/test-application-skeleton/webpack.config.js:72:3: Expected space or tab after '//' in comment.
+  /Users/tijs/Sites/tijs/test-application-skeleton/webpack.config.js:83:118: Unexpected trailing comma.
+  /Users/tijs/Sites/tijs/test-application-skeleton/webpack.config.js:84:10: Unexpected trailing comma.
+  /Users/tijs/Sites/tijs/test-application-skeleton/webpack.config.js:88:1: More than 1 blank line not allowed.
