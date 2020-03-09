@@ -21,6 +21,7 @@ if ((!$loader = includeIfExists(
 use Symfony\Component\Console\Application;
 use TijsVerkoyen\ConvertToJUnitXML\Command\ConvertNpmAuditCommand;
 use TijsVerkoyen\ConvertToJUnitXML\Command\ConvertSensiolabsSecurityCheckCommand;
+use TijsVerkoyen\ConvertToJUnitXML\Command\ConvertStandardJsCommand;
 use TijsVerkoyen\ConvertToJUnitXML\Command\ConvertStylelintCommand;
 
 $application = new Application('Convert to JUnit XML');
@@ -37,6 +38,11 @@ $application->add(
 $application->add(
     new ConvertSensiolabsSecurityCheckCommand(
         new \TijsVerkoyen\ConvertToJUnitXML\Converters\Sensiolabs\SecurityCheck()
+    )
+);
+$application->add(
+    new ConvertStandardJsCommand(
+        new \TijsVerkoyen\ConvertToJUnitXML\Converters\StandardJs\StandardJs()
     )
 );
 $application->add(
