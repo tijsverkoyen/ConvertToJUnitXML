@@ -8,7 +8,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TijsVerkoyen\ConvertToJUnitXML\Converters\ConverterInterface;
 
-class ConvertSensiolabsSecurityCheckCommand extends Command
+class ConvertStandardJsCommand extends Command
 {
     /**
      * @var ConverterInterface
@@ -25,14 +25,14 @@ class ConvertSensiolabsSecurityCheckCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('convert:sensiolabs-security-check')
+            ->setName('convert:standardjs')
             ->setDescription(
-                'Convert the output of security-checker security:check --format=json to JUnit XML.'
+                'Convert the output of standard to JUnit XML.'
             )
             ->addArgument(
                 'input',
                 InputArgument::REQUIRED,
-                "The JSON to convert"
+                "The lines to convert"
             );
     }
 
