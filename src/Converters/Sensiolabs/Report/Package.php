@@ -20,10 +20,10 @@ final class Package {
    *   The advisories.
    */
   public function __construct(
-        private string $name,
-        private string $version,
-        private array $advisories
-    ) {
+    private string $name,
+    private string $version,
+    private array $advisories
+  ) {
   }
 
   /**

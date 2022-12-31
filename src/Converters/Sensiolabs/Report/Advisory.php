@@ -13,9 +13,9 @@ final class Advisory {
    * Constructs a new object.
    */
   public function __construct(
-        private string $title,
-        private string $link
-    ) {
+    private string $title,
+    private string $link
+  ) {
   }
 
   /**

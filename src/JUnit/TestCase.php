@@ -19,8 +19,8 @@ final class TestCase {
    * Constructs a new object.
    */
   public function __construct(
-        private string $name
-    ) {
+    private string $name
+  ) {
   }
 
   /**

@@ -13,10 +13,10 @@ final class Failure {
    * Constructs a new object.
    */
   public function __construct(
-        private string $type,
-        private string $message,
-        private string $description = ''
-    ) {
+    private string $type,
+    private string $message,
+    private string $description = ''
+  ) {
   }
 
   /**

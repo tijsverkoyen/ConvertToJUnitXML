@@ -26,13 +26,13 @@ final class Advisory {
    *   The paths.
    */
   public function __construct(
-        private string $title,
-        private string $package,
-        private string $recommendation,
-        private string $severity,
-        private string $url,
-        private ?array $paths = NULL
-    ) {
+    private string $title,
+    private string $package,
+    private string $recommendation,
+    private string $severity,
+    private string $url,
+    private ?array $paths = NULL
+  ) {
   }
 
   /**

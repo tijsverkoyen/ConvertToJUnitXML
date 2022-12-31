@@ -18,8 +18,8 @@ final class Report {
    *   The advisories.
    */
   public function __construct(
-        private array $advisories
-    ) {
+    private array $advisories
+  ) {
   }
 
   /**

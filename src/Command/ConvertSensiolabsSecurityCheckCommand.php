@@ -19,8 +19,8 @@ final class ConvertSensiolabsSecurityCheckCommand extends Command {
    * Constructs a new object.
    */
   public function __construct(
-        private ConverterInterface $converter
-    ) {
+    private ConverterInterface $converter
+  ) {
     parent::__construct();
   }
 
@@ -31,13 +31,13 @@ final class ConvertSensiolabsSecurityCheckCommand extends Command {
     $this
       ->setName('convert:sensiolabs-security-check')
       ->setDescription(
-              'Convert the output of security-checker security:check --format=json to JUnit XML.'
-          )
+        'Convert the output of security-checker security:check --format=json to JUnit XML.'
+      )
       ->addArgument(
-              'input',
-              InputArgument::REQUIRED,
-              "The JSON to convert"
-          );
+        'input',
+        InputArgument::REQUIRED,
+        "The JSON to convert"
+      );
   }
 
   /**
@@ -48,8 +48,8 @@ final class ConvertSensiolabsSecurityCheckCommand extends Command {
    */
   protected function execute(InputInterface $input, OutputInterface $output): int {
     $jUnitReport = $this->converter->convert(
-          $input->getArgument('input')
-      );
+      $input->getArgument('input')
+    );
 
     $output->write($jUnitReport->__toString());
 

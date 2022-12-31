@@ -18,8 +18,8 @@ final class Report {
    *   The packages.
    */
   public function __construct(
-        private array $packages
-    ) {
+    private array $packages
+  ) {
   }
 
   /**

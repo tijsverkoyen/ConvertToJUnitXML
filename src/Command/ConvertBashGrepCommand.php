@@ -19,8 +19,8 @@ final class ConvertBashGrepCommand extends Command {
    * Constructs a new object.
    */
   public function __construct(
-        private ConverterInterface $converter
-    ) {
+    private ConverterInterface $converter
+  ) {
     parent::__construct();
   }
 
@@ -31,13 +31,13 @@ final class ConvertBashGrepCommand extends Command {
     $this
       ->setName('convert:grep')
       ->setDescription(
-              'Convert the output of grep -n to JUnit XML.'
-          )
+        'Convert the output of grep -n to JUnit XML.'
+      )
       ->addArgument(
-              'input',
-              InputArgument::OPTIONAL,
-              "The output of the grep command to convert"
-          );
+        'input',
+        InputArgument::OPTIONAL,
+        "The output of the grep command to convert"
+      );
   }
 
   /**
@@ -48,8 +48,8 @@ final class ConvertBashGrepCommand extends Command {
    */
   protected function execute(InputInterface $input, OutputInterface $output): int {
     $jUnitReport = $this->converter->convert(
-          (string) $input->getArgument('input')
-      );
+      (string) $input->getArgument('input')
+    );
 
     $output->write($jUnitReport->__toString());
     if ($jUnitReport->hasFailures()) {

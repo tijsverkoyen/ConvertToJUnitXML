@@ -20,8 +20,8 @@ final class ConvertNpmAuditCommand extends Command {
    * Constructs a new object.
    */
   public function __construct(
-        private ConverterInterface $converter
-    ) {
+    private ConverterInterface $converter
+  ) {
     parent::__construct();
   }
 
@@ -32,13 +32,13 @@ final class ConvertNpmAuditCommand extends Command {
     $this
       ->setName('convert:npm-audit')
       ->setDescription(
-              'Convert the output of npm audit --json to JUnit XML.'
-          )
+        'Convert the output of npm audit --json to JUnit XML.'
+      )
       ->addArgument(
-              'input',
-              InputArgument::OPTIONAL,
-              "The JSON to convert"
-          );
+        'input',
+        InputArgument::OPTIONAL,
+        "The JSON to convert"
+      );
   }
 
   /**

@@ -19,8 +19,8 @@ final class ConvertStylelintCommand extends Command {
    * Constructs a new object.
    */
   public function __construct(
-        private ConverterInterface $converter
-    ) {
+    private ConverterInterface $converter
+  ) {
     parent::__construct();
   }
 
@@ -31,13 +31,13 @@ final class ConvertStylelintCommand extends Command {
     $this
       ->setName('convert:stylelint')
       ->setDescription(
-              'Convert the output of stylelint --format=json to JUnit XML.'
-          )
+        'Convert the output of stylelint --format=json to JUnit XML.'
+      )
       ->addArgument(
-              'input',
-              InputArgument::REQUIRED,
-              "The JSON to convert"
-          );
+        'input',
+        InputArgument::REQUIRED,
+        "The JSON to convert"
+      );
   }
 
   /**
@@ -48,8 +48,8 @@ final class ConvertStylelintCommand extends Command {
    */
   protected function execute(InputInterface $input, OutputInterface $output): int {
     $jUnitReport = $this->converter->convert(
-          $input->getArgument('input')
-      );
+      $input->getArgument('input')
+    );
 
     $output->write($jUnitReport->__toString());
 
