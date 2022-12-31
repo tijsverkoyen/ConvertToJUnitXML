@@ -17,9 +17,6 @@ use KoenVanMeijeren\ConvertToJUnitXML\Converters\Bash\Grep;
 final class ConvertGrepCommandTest extends TestCase {
   private CommandTester $commandTester;
 
-  /**
-   *
-   */
   protected function setUp(): void {
     $application = new Application();
     $application->add(new ConvertBashGrepCommand(new Grep()));
@@ -28,9 +25,6 @@ final class ConvertGrepCommandTest extends TestCase {
     $this->commandTester = new CommandTester($command);
   }
 
-  /**
-   *
-   */
   public function testExecuteWithEmptyString(): void {
     $this->commandTester->execute(
           [
