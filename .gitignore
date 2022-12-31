@@ -1,5 +1,5 @@
-.idea
+/.idea
 composer.lock
-vendor/
-code-reports
+/vendor
+/code-reports
 .phpunit.result.cache
