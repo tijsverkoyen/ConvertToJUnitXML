@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-Ruleset -->
+<ruleset name="ConvertToJUnitXML">
+    <description>The coding standards of this project.</description>
+
+    <rule ref="Drupal"/>
+    <rule ref="DrupalPractice"/>
+
+    <arg name="report-full"/>
+    <arg name="colors"/>
+    <arg name="extensions" value="php"/>
+
+    <file>src</file>
+</ruleset>

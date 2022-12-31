@@ -1,22 +1,27 @@
 <?php
 
-namespace tests\TijsVerkoyen\ConvertToJUnitXML\Converters\Stylelint;
+namespace tests\KoenVanMeijeren\ConvertToJUnitXML\Converters\Stylelint;
 
 use PHPUnit\Framework\TestCase;
-use TijsVerkoyen\ConvertToJUnitXML\Converters\Stylelint\Stylelint;
+use KoenVanMeijeren\ConvertToJUnitXML\Converters\Stylelint\Stylelint;
 
-class StylelintTest extends TestCase
-{
-    public function testConversion(): void
-    {
-        $stylelint = new Stylelint();
-        $jUnit = $stylelint->convert(
-            file_get_contents(
-                __DIR__ . '/../../assets/stylelint/multiple.json'
-            )
-        );
+/**
+ * Provides a class for StylelintTest.
+ *
+ * @package tests\KoenVanMeijeren\ConvertToJUnitXML\Converters\Stylelint
+ */
+final class StylelintTest extends TestCase {
 
-        $xml = $jUnit->toXML();
-        $this->assertCount(1, $xml->getElementsByTagName('testsuite'));
-    }
+  public function testConversion(): void {
+    $stylelint = new Stylelint();
+    $jUnit = $stylelint->convert(
+          (string) file_get_contents(
+              __DIR__ . '/../../assets/stylelint/multiple.json'
+          )
+      );
+
+    $xml = $jUnit->toXml();
+    self::assertCount(1, $xml->getElementsByTagName('testsuite'));
+  }
+
 }

@@ -1,53 +1,58 @@
 <?php
 
-namespace tests\TijsVerkoyen\ConvertToJUnitXML\JUnit;
+namespace tests\KoenVanMeijeren\ConvertToJUnitXML\JUnit;
 
 use PHPUnit\Framework\TestCase;
-use TijsVerkoyen\ConvertToJUnitXML\JUnit\Failure;
-use TijsVerkoyen\ConvertToJUnitXML\JUnit\TestSuite;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\Failure;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\TestSuite;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\TestCase as JUnitTestCase;
 
-class TestSuiteTest extends TestCase
-{
-    public function testXMLGeneration(): void
-    {
-        $name = 'name';
+/**
+ * Provides a class for TestSuiteTest.
+ *
+ * @package tests\KoenVanMeijeren\ConvertToJUnitXML\JUnit
+ */
+final class TestSuiteTest extends TestCase {
 
-        $testSuite = new TestSuite($name);
+  public function testXMLGeneration(): void {
+    $name = 'name';
 
-        $document = new \DOMDocument();
-        $node = $testSuite->toXML($document);
+    $testSuite = new TestSuite($name);
 
-        $this->assertEquals('testsuite', $node->nodeName);
+    $document = new \DOMDocument();
+    $node = $testSuite->toXml($document);
+    assert($node instanceof \DOMElement);
 
-        $this->assertTrue($node->hasAttribute('name'));
-        $this->assertEquals($name, $node->getAttribute('name'));
+    self::assertEquals('testsuite', $node->nodeName);
 
-        $this->assertTrue($node->hasAttribute('failures'));
-        $this->assertEquals(0, $node->getAttribute('failures'));
-    }
+    self::assertTrue($node->hasAttribute('name'));
+    self::assertEquals($name, $node->getAttribute('name'));
 
-    public function testXMLGenerationWithFailures(): void
-    {
-        $name = 'name';
+    self::assertTrue($node->hasAttribute('failures'));
+    self::assertEquals(0, $node->getAttribute('failures'));
+  }
 
-        $testCase = new \TijsVerkoyen\ConvertToJUnitXML\JUnit\TestCase(
-            'testcase'
-        );
-        $testCase->addFailure(new Failure('error', 'message'));
-        $testCase->addFailure(new Failure('error', 'message'));
+  public function testXMLGenerationWithFailures(): void {
+    $name = 'name';
 
-        $testSuite = new TestSuite($name);
-        $testSuite->addTestCase($testCase);
+    $testCase = new JUnitTestCase('testcase');
+    $testCase->addFailure(new Failure('error', 'message'));
+    $testCase->addFailure(new Failure('error', 'message'));
 
-        $document = new \DOMDocument();
-        $node = $testSuite->toXML($document);
+    $testSuite = new TestSuite($name);
+    $testSuite->addTestCase($testCase);
 
-        $this->assertEquals('testsuite', $node->nodeName);
+    $document = new \DOMDocument();
+    $node = $testSuite->toXml($document);
+    assert($node instanceof \DOMElement);
 
-        $this->assertTrue($node->hasAttribute('name'));
-        $this->assertEquals($name, $node->getAttribute('name'));
+    self::assertEquals('testsuite', $node->nodeName);
 
-        $this->assertTrue($node->hasAttribute('failures'));
-        $this->assertEquals(2, $node->getAttribute('failures'));
-    }
+    self::assertTrue($node->hasAttribute('name'));
+    self::assertEquals($name, $node->getAttribute('name'));
+
+    self::assertTrue($node->hasAttribute('failures'));
+    self::assertEquals(2, $node->getAttribute('failures'));
+  }
+
 }

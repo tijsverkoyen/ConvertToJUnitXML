@@ -1,100 +1,106 @@
 <?php
 
-namespace TijsVerkoyen\ConvertToJUnitXML\Converters\Npm\Report;
+namespace KoenVanMeijeren\ConvertToJUnitXML\Converters\Npm\Report;
 
-class Advisory
-{
-    /**
-     * @var string
-     */
-    private $title;
+/**
+ * Provides a class for Advisory.
+ *
+ * @package KoenVanMeijeren\ConvertToJUnitXML\Converters\Npm\Report
+ */
+final class Advisory {
 
-    /**
-     * @var string
-     */
-    private $package;
-
-    /**
-     * @var string
-     */
-    private $recommendation;
-
-    /**
-     * @var string
-     */
-    private $severity;
-
-    /**
-     * @var string
-     */
-    private $url;
-
-    /**
-     * @var array
-     */
-    private $paths = [];
-
-    public function __construct(
-        string $title,
-        string $package,
-        string $recommendation,
-        string $severity,
-        string $url,
-        ?array $paths = null
+  /**
+   * Constructs a new object.
+   *
+   * @param string $title
+   *   The title.
+   * @param string $package
+   *   The package.
+   * @param string $recommendation
+   *   The recommendation.
+   * @param string $severity
+   *   The severity.
+   * @param string $url
+   *   The url.
+   * @param string[]|null $paths
+   *   The paths.
+   */
+  public function __construct(
+        private string $title,
+        private string $package,
+        private string $recommendation,
+        private string $severity,
+        private string $url,
+        private ?array $paths = NULL
     ) {
-        $this->title = $title;
-        $this->package = $package;
-        $this->recommendation = $recommendation;
-        $this->severity = $severity;
-        $this->url = $url;
-        $this->paths = $paths;
-    }
+  }
 
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
+  /**
+   * Gets the title.
+   */
+  public function getTitle(): string {
+    return $this->title;
+  }
 
-    public function getPackage(): string
-    {
-        return $this->package;
-    }
+  /**
+   * Gets the package.
+   */
+  public function getPackage(): string {
+    return $this->package;
+  }
 
-    public function getRecommendation(): string
-    {
-        return $this->recommendation;
-    }
+  /**
+   * Gets the recommendation.
+   */
+  public function getRecommendation(): string {
+    return $this->recommendation;
+  }
 
-    public function getSeverity(): string
-    {
-        return $this->severity;
-    }
+  /**
+   * Gets the severity.
+   */
+  public function getSeverity(): string {
+    return $this->severity;
+  }
 
-    public function getUrl(): string
-    {
-        return $this->url;
-    }
+  /**
+   * Gets the url.
+   */
+  public function getUrl(): string {
+    return $this->url;
+  }
 
-    public function getPaths(): array
-    {
-        return $this->paths;
-    }
+  /**
+   * Gets the paths.
+   *
+   * @return string[]
+   *   The paths.
+   */
+  public function getPaths(): array {
+    return (array) $this->paths;
+  }
 
-    public static function fromJson(\stdClass $json): Advisory
-    {
-        $paths = null;
+  /**
+   * Determines if this object has paths.
+   */
+  public function hasPaths(): bool {
+    return $this->paths !== NULL && $this->paths !== [];
+  }
 
-        if (isset($json->findings[0]->paths)) {
-            $paths = $json->findings[0]->paths;
-        }
+  /**
+   * Creates the object from JSON.
+   */
+  public static function fromJson(\stdClass $json): self {
+    $paths = $json->findings[0]->paths ?? NULL;
 
-        return new Advisory(
-            $json->title,
-            $json->module_name,
-            $json->recommendation,
-            $json->severity,
-            $json->url,
-            $paths
-        );
-    }
+    return new self(
+          $json->title,
+          $json->module_name,
+          $json->recommendation,
+          $json->severity,
+          $json->url,
+          $paths
+      );
+  }
+
 }

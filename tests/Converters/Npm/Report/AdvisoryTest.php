@@ -1,45 +1,39 @@
 <?php
 
-namespace tests\TijsVerkoyen\ConvertToJUnitXML\Converters\Npm\Report;
+namespace tests\KoenVanMeijeren\ConvertToJUnitXML\Converters\Npm\Report;
 
 use PHPUnit\Framework\TestCase;
-use TijsVerkoyen\ConvertToJUnitXML\Converters\Npm\Report\Advisory;
+use KoenVanMeijeren\ConvertToJUnitXML\Converters\Npm\Report\Advisory;
 
-class AdvisoryTest extends TestCase
-{
-    public function testCreationFromJson()
-    {
-        $finding = new \stdClass();
-        $finding->paths = [
-            'path 1',
-            'path 2',
-        ];
+/**
+ * Provides a class for AdvisoryTest.
+ *
+ * @package tests\KoenVanMeijeren\ConvertToJUnitXML\Converters\Npm\Report
+ */
+final class AdvisoryTest extends TestCase {
 
-        $json = new \stdClass();
-        $json->title = 'title';
-        $json->module_name = 'module_name';
-        $json->recommendation = 'recommendation';
-        $json->severity = 'severity';
-        $json->url = 'url';
-        $json->findings = [
-            $finding
-        ];
+  public function testCreationFromJson(): void {
+    $finding = new \stdClass();
+    $finding->paths = [
+      'path 1',
+      'path 2',
+    ];
 
-        $advisory = Advisory::fromJson($json);
+    $json = new \stdClass();
+    $json->title = 'title';
+    $json->module_name = 'module_name';
+    $json->recommendation = 'recommendation';
+    $json->severity = 'severity';
+    $json->url = 'url';
+    $json->findings = [
+      $finding,
+    ];
 
-        $this->assertEquals(
-            'module_name',
-            $advisory->getPackage()
-        );
+    $advisory = Advisory::fromJson($json);
 
-        $this->assertEquals(
-            ['path 1', 'path 2'],
-            $advisory->getPaths()
-        );
+    self::assertEquals('module_name', $advisory->getPackage());
+    self::assertEquals(['path 1', 'path 2'], $advisory->getPaths());
+    self::assertEquals('title', $advisory->getTitle());
+  }
 
-        $this->assertEquals(
-            'title',
-            $advisory->getTitle()
-        );
-    }
 }

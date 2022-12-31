@@ -1,40 +1,33 @@
 <?php
 
-namespace TijsVerkoyen\ConvertToJUnitXML\JUnit;
+namespace KoenVanMeijeren\ConvertToJUnitXML\JUnit;
 
-class Failure
-{
-    /**
-     * @var string
-     */
-    private $type;
+/**
+ * Provides a class for Failure.
+ *
+ * @package KoenVanMeijeren\ConvertToJUnitXML\JUnit
+ */
+final class Failure {
 
-    /**
-     * @var string
-     */
-    private $message;
-
-    /**
-     * @var null|string
-     */
-    private $description;
-
-    public function __construct(
-        string $type,
-        string $message,
-        ?string $description = null
+  /**
+   * Constructs a new object.
+   */
+  public function __construct(
+        private string $type,
+        private string $message,
+        private string $description = ''
     ) {
-        $this->type = $type;
-        $this->message = $message;
-        $this->description = $description;
-    }
+  }
 
-    public function toXML(\DOMDocument $document): \DOMNode
-    {
-        $node = $document->createElement('failure', $this->description);
-        $node->setAttribute('type', $this->type);
-        $node->setAttribute('message', $this->message);
+  /**
+   * Renders the data to XML.
+   */
+  public function toXml(\DOMDocument $document): \DOMNode {
+    $node = $document->createElement('failure', $this->description);
+    $node->setAttribute('type', $this->type);
+    $node->setAttribute('message', $this->message);
 
-        return $node;
-    }
+    return $node;
+  }
+
 }

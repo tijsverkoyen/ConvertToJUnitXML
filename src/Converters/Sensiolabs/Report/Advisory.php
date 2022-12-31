@@ -1,40 +1,42 @@
 <?php
 
-namespace TijsVerkoyen\ConvertToJUnitXML\Converters\Sensiolabs\Report;
+namespace KoenVanMeijeren\ConvertToJUnitXML\Converters\Sensiolabs\Report;
 
-class Advisory
-{
-    /**
-     * @var string
-     */
-    private $title;
+/**
+ * Provides a class for Advisory.
+ *
+ * @package KoenVanMeijeren\ConvertToJUnitXML\Converters\Sensiolabs\Report
+ */
+final class Advisory {
 
-    /**
-     * @var string
-     */
-    private $link;
+  /**
+   * Constructs a new object.
+   */
+  public function __construct(
+        private string $title,
+        private string $link
+    ) {
+  }
 
-    public function __construct(string $title, string $link)
-    {
-        $this->title = $title;
-        $this->link = $link;
-    }
+  /**
+   * Gets the title.
+   */
+  public function getTitle(): string {
+    return $this->title;
+  }
 
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
+  /**
+   * Gets the link.
+   */
+  public function getLink(): string {
+    return $this->link;
+  }
 
-    public function getLink(): string
-    {
-        return $this->link;
-    }
+  /**
+   * Constructs the object from JSON.
+   */
+  public static function fromJson(\stdClass $json): self {
+    return new self($json->title, $json->link);
+  }
 
-    public static function fromJson(\stdClass $json): Advisory
-    {
-        return new Advisory(
-            $json->title,
-            $json->link
-        );
-    }
 }

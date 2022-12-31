@@ -1,49 +1,55 @@
 <?php
 
-namespace tests\TijsVerkoyen\ConvertToJUnitXML\JUnit;
+namespace tests\KoenVanMeijeren\ConvertToJUnitXML\JUnit;
 
 use PHPUnit\Framework\TestCase;
-use TijsVerkoyen\ConvertToJUnitXML\JUnit\Failure;
-use TijsVerkoyen\ConvertToJUnitXML\JUnit\TestSuite;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\Failure;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\TestCase as JUnitTestCase;
 
-class TestCaseTest extends TestCase
-{
-    public function testXMLGeneration(): void
-    {
-        $name = 'name';
+/**
+ * Provides a class for TestCaseTest.
+ *
+ * @package tests\KoenVanMeijeren\ConvertToJUnitXML\JUnit
+ */
+final class TestCaseTest extends TestCase {
 
-        $testCase = new \TijsVerkoyen\ConvertToJUnitXML\JUnit\TestCase($name);
+  public function testXMLGeneration(): void {
+    $name = 'name';
 
-        $document = new \DOMDocument();
-        $node = $testCase->toXML($document);
+    $testCase = new JUnitTestCase($name);
 
-        $this->assertEquals('testcase', $node->nodeName);
+    $document = new \DOMDocument();
+    $node = $testCase->toXml($document);
+    assert($node instanceof \DOMElement);
 
-        $this->assertTrue($node->hasAttribute('name'));
-        $this->assertEquals($name, $node->getAttribute('name'));
+    self::assertEquals('testcase', $node->nodeName);
 
-        $this->assertTrue($node->hasAttribute('failures'));
-        $this->assertEquals(0, $node->getAttribute('failures'));
-    }
+    self::assertTrue($node->hasAttribute('name'));
+    self::assertEquals($name, $node->getAttribute('name'));
 
-    public function testXMLGenerationWithFailures(): void
-    {
-        $name = 'name';
+    self::assertTrue($node->hasAttribute('failures'));
+    self::assertEquals(0, $node->getAttribute('failures'));
+  }
 
-        $testCase = new \TijsVerkoyen\ConvertToJUnitXML\JUnit\TestCase($name);
+  public function testXMLGenerationWithFailures(): void {
+    $name = 'name';
 
-        $testCase->addFailure(new Failure('error', 'message'));
-        $testCase->addFailure(new Failure('error', 'message'));
+    $testCase = new JUnitTestCase($name);
 
-        $document = new \DOMDocument();
-        $node = $testCase->toXML($document);
+    $testCase->addFailure(new Failure('error', 'message'));
+    $testCase->addFailure(new Failure('error', 'message'));
 
-        $this->assertEquals('testcase', $node->nodeName);
+    $document = new \DOMDocument();
+    $node = $testCase->toXml($document);
+    assert($node instanceof \DOMElement);
 
-        $this->assertTrue($node->hasAttribute('name'));
-        $this->assertEquals($name, $node->getAttribute('name'));
+    self::assertEquals('testcase', $node->nodeName);
 
-        $this->assertTrue($node->hasAttribute('failures'));
-        $this->assertEquals(2, $node->getAttribute('failures'));
-    }
+    self::assertTrue($node->hasAttribute('name'));
+    self::assertEquals($name, $node->getAttribute('name'));
+
+    self::assertTrue($node->hasAttribute('failures'));
+    self::assertEquals(2, $node->getAttribute('failures'));
+  }
+
 }

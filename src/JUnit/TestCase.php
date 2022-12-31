@@ -1,45 +1,59 @@
 <?php
 
-namespace TijsVerkoyen\ConvertToJUnitXML\JUnit;
+namespace KoenVanMeijeren\ConvertToJUnitXML\JUnit;
 
-class TestCase
-{
-    /**
-     * @var string
-     */
-    private $name;
+/**
+ * Provides a class for TestCase.
+ *
+ * @package KoenVanMeijeren\ConvertToJUnitXML\JUnit
+ */
+final class TestCase {
+  /**
+   * The failures.
+   *
+   * @var Failure[]
+   */
+  private array $failures = [];
 
-    /**
-     * @var array
-     */
-    private $failures = [];
+  /**
+   * Constructs a new object.
+   */
+  public function __construct(
+        private string $name
+    ) {
+  }
 
-    public function __construct(string $name)
-    {
-        $this->name = $name;
+  /**
+   * Adds a failure.
+   */
+  public function addFailure(Failure $failure): TestCase {
+    $this->failures[] = $failure;
+    return $this;
+  }
+
+  /**
+   * Function for getFailures.
+   *
+   * @return Failure[]
+   *   The failures.
+   */
+  public function getFailures(): array {
+    return $this->failures;
+  }
+
+  /**
+   * Renders the object to XML.
+   */
+  public function toXml(\DOMDocument $document): \DOMNode {
+    $node = $document->createElement('testcase');
+    $node->setAttribute('name', $this->name);
+    $node->setAttribute('failures', (string) count($this->failures));
+
+    foreach ($this->failures as $failure) {
+      $node->appendChild($failure->toXml($document));
     }
 
-    public function addFailure(Failure $failure): TestCase
-    {
-        $this->failures[] = $failure;
-        return $this;
-    }
+    return $node;
+  }
 
-    public function getFailures(): array
-    {
-        return $this->failures;
-    }
-
-    public function toXML(\DOMDocument $document): \DOMNode
-    {
-        $node = $document->createElement('testcase');
-        $node->setAttribute('name', $this->name);
-        $node->setAttribute('failures', count($this->failures));
-
-        foreach ($this->failures as $failure) {
-            $node->appendChild($failure->toXML($document));
-        }
-
-        return $node;
-    }
 }

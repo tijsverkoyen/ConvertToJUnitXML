@@ -1,51 +1,68 @@
 <?php
 
-namespace TijsVerkoyen\ConvertToJUnitXML\JUnit;
+namespace KoenVanMeijeren\ConvertToJUnitXML\JUnit;
 
-class JUnit
-{
-    /**
-     * @var TestSuite[]
-     */
-    private $testSuites = [];
+/**
+ * Provides a class for JUnit.
+ *
+ * @package KoenVanMeijeren\ConvertToJUnitXML\JUnit
+ */
+final class JUnit {
+  public const DOM_DOCUMENT_VERSION = '1.0';
 
-    public function addTestSuite(TestSuite $testSuite): JUnit
-    {
-        $this->testSuites[] = $testSuite;
-        return $this;
+  /**
+   * The testSuites.
+   *
+   * @var TestSuite[]
+   */
+  private array $testSuites = [];
+
+  /**
+   * Adds a test suite.
+   */
+  public function addTestSuite(TestSuite $testSuite): JUnit {
+    $this->testSuites[] = $testSuite;
+    return $this;
+  }
+
+  /**
+   * Determines if there are failures.
+   */
+  public function hasFailures(): bool {
+    if ($this->testSuites === []) {
+      return FALSE;
     }
 
-    public function hasFailures(): bool
-    {
-        if (empty($this->testSuites)) {
-            return false;
-        }
-
-        foreach ($this->testSuites as $testSuite) {
-            if ($testSuite->getFailureCount() > 0) {
-                return true;
-            }
-        }
-
-        return false;
+    foreach ($this->testSuites as $testSuite) {
+      if ($testSuite->getFailureCount() > 0) {
+        return TRUE;
+      }
     }
 
-    public function toXML(): \DOMDocument
-    {
-        $document = new \DOMDocument('1.0', 'utf-8');
-        $document->formatOutput = true;
+    return FALSE;
+  }
 
-        $testSuites = $document->createElement('testsuites');
-        $document->appendChild($testSuites);
+  /**
+   * Renders the data to XML.
+   */
+  public function toXml(): \DOMDocument {
+    $document = new \DOMDocument(self::DOM_DOCUMENT_VERSION, 'utf-8');
+    $document->formatOutput = TRUE;
 
-        foreach ($this->testSuites as $testSuite) {
-            $testSuites->appendChild($testSuite->toXML($document));
-        }
-        return $document;
+    $testSuites = $document->createElement('testsuites');
+    $document->appendChild($testSuites);
+
+    foreach ($this->testSuites as $testSuite) {
+      $testSuites->appendChild($testSuite->toXml($document));
     }
+    return $document;
+  }
 
-    public function __toString()
-    {
-        return $this->toXML()->saveXML();
-    }
+  /**
+   * Renders the XML to string.
+   */
+  public function __toString(): string {
+    return (string) $this->toXml()->saveXML();
+  }
+
 }

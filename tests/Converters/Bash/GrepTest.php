@@ -1,32 +1,36 @@
 <?php
 
-namespace tests\TijsVerkoyen\ConvertToJUnitXML\Converters\Bash;
+namespace tests\KoenVanMeijeren\ConvertToJUnitXML\Converters\Bash;
 
 use PHPUnit\Framework\TestCase;
-use TijsVerkoyen\ConvertToJUnitXML\Converters\Bash\Grep;
+use KoenVanMeijeren\ConvertToJUnitXML\Converters\Bash\Grep;
 
-class GrepTest extends TestCase
-{
-    public function testConversion(): void
-    {
-        $grep = new Grep();
-        $jUnit = $grep->convert(
-            file_get_contents(
-                __DIR__ . '/../../assets/bash-grep/multiple.txt'
-            )
-        );
+/**
+ * Provides a class for GrepTest.
+ *
+ * @package tests\KoenVanMeijeren\ConvertToJUnitXML\Converters\Bash
+ */
+final class GrepTest extends TestCase {
 
-        $xml = $jUnit->toXML();
-        $this->assertCount(1, $xml->getElementsByTagName('testsuite'));
-    }
+  public function testConversion(): void {
+    $grep = new Grep();
+    $jUnit = $grep->convert(
+          (string) file_get_contents(
+              __DIR__ . '/../../assets/bash-grep/multiple.txt'
+          )
+      );
 
-    public function testCreationFromEmptyString(): void
-    {
-        $grep = new Grep();
-        $jUnit = $grep->convert('');
+    $xml = $jUnit->toXml();
+    self::assertCount(1, $xml->getElementsByTagName('testsuite'));
+  }
 
-        $xml = $jUnit->toXML();
-        $this->assertCount(1, $xml->getElementsByTagName('testsuite'));
-        $this->assertCount(0, $xml->getElementsByTagName('testcase'));
-    }
+  public function testCreationFromEmptyString(): void {
+    $grep = new Grep();
+    $jUnit = $grep->convert('');
+
+    $xml = $jUnit->toXml();
+    self::assertCount(1, $xml->getElementsByTagName('testsuite'));
+    self::assertCount(0, $xml->getElementsByTagName('testcase'));
+  }
+
 }

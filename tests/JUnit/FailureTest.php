@@ -1,28 +1,34 @@
 <?php
 
-namespace tests\TijsVerkoyen\ConvertToJUnitXML\JUnit;
+namespace tests\KoenVanMeijeren\ConvertToJUnitXML\JUnit;
 
 use PHPUnit\Framework\TestCase;
-use TijsVerkoyen\ConvertToJUnitXML\JUnit\Failure;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\Failure;
 
-class FailureTest extends TestCase
-{
-    public function testXMLGeneration(): void
-    {
-        $type = 'type';
-        $message = 'message';
+/**
+ * Provides a class for FailureTest.
+ *
+ * @package tests\KoenVanMeijeren\ConvertToJUnitXML\JUnit
+ */
+final class FailureTest extends TestCase {
 
-        $failure = new Failure($type, $message);
+  public function testXMLGeneration(): void {
+    $type = 'type';
+    $message = 'message';
 
-        $document = new \DOMDocument();
-        $node = $failure->toXML($document);
+    $failure = new Failure($type, $message);
 
-        $this->assertEquals('failure', $node->nodeName);
+    $document = new \DOMDocument();
+    $node = $failure->toXml($document);
+    assert($node instanceof \DOMElement);
 
-        $this->assertTrue($node->hasAttribute('type'));
-        $this->assertEquals($type, $node->getAttribute('type'));
+    self::assertEquals('failure', $node->nodeName);
 
-        $this->assertTrue($node->hasAttribute('message'));
-        $this->assertEquals($message, $node->getAttribute('message'));
-    }
+    self::assertTrue($node->hasAttribute('type'));
+    self::assertEquals($type, $node->getAttribute('type'));
+
+    self::assertTrue($node->hasAttribute('message'));
+    self::assertEquals($message, $node->getAttribute('message'));
+  }
+
 }

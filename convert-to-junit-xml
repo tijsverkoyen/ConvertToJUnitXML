@@ -1,16 +1,21 @@
 #!/usr/bin/env php
 <?php
 
-function includeIfExists($file)
+function includeIfExists($file): mixed
 {
-    if (file_exists($file)) {
-        return include $file;
+    if (!file_exists($file)) {
+        return null;
     }
+
+    return include $file;
 }
 
-if ((!$loader = includeIfExists(
-        __DIR__ . '/vendor/autoload.php'
-    )) && (!$loader = includeIfExists(__DIR__ . '/../../autoload.php'))) {
+$loader = includeIfExists(__DIR__ . '/vendor/autoload.php');
+if (!$loader instanceof \Composer\Autoload\ClassLoader) {
+    $loader = includeIfExists(__DIR__ . '/../../autoload.php');
+}
+
+if (!$loader instanceof \Composer\Autoload\ClassLoader) {
     die(
         'You must set up the project dependencies, run the following commands:' . PHP_EOL .
         'curl -sS https://getcomposer.org/installer | php' . PHP_EOL .
@@ -19,35 +24,35 @@ if ((!$loader = includeIfExists(
 }
 
 use Symfony\Component\Console\Application;
-use TijsVerkoyen\ConvertToJUnitXML\Command\ConvertNpmAuditCommand;
-use TijsVerkoyen\ConvertToJUnitXML\Command\ConvertSensiolabsSecurityCheckCommand;
-use TijsVerkoyen\ConvertToJUnitXML\Command\ConvertStandardJsCommand;
-use TijsVerkoyen\ConvertToJUnitXML\Command\ConvertStylelintCommand;
+use KoenVanMeijeren\ConvertToJUnitXML\Command\ConvertNpmAuditCommand;
+use KoenVanMeijeren\ConvertToJUnitXML\Command\ConvertSensiolabsSecurityCheckCommand;
+use KoenVanMeijeren\ConvertToJUnitXML\Command\ConvertStandardJsCommand;
+use KoenVanMeijeren\ConvertToJUnitXML\Command\ConvertStylelintCommand;
 
 $application = new Application('Convert to JUnit XML');
 $application->add(
-    new \TijsVerkoyen\ConvertToJUnitXML\Command\ConvertBashGrepCommand(
-        new \TijsVerkoyen\ConvertToJUnitXML\Converters\Bash\Grep()
+    new \KoenVanMeijeren\ConvertToJUnitXML\Command\ConvertBashGrepCommand(
+        new \KoenVanMeijeren\ConvertToJUnitXML\Converters\Bash\Grep()
     )
 );
 $application->add(
     new ConvertNpmAuditCommand(
-        new \TijsVerkoyen\ConvertToJUnitXML\Converters\Npm\Audit()
+        new \KoenVanMeijeren\ConvertToJUnitXML\Converters\Npm\Audit()
     )
 );
 $application->add(
     new ConvertSensiolabsSecurityCheckCommand(
-        new \TijsVerkoyen\ConvertToJUnitXML\Converters\Sensiolabs\SecurityCheck()
+        new \KoenVanMeijeren\ConvertToJUnitXML\Converters\Sensiolabs\SecurityCheck()
     )
 );
 $application->add(
     new ConvertStandardJsCommand(
-        new \TijsVerkoyen\ConvertToJUnitXML\Converters\StandardJs\StandardJs()
+        new \KoenVanMeijeren\ConvertToJUnitXML\Converters\StandardJs\StandardJs()
     )
 );
 $application->add(
     new ConvertStylelintCommand(
-        new \TijsVerkoyen\ConvertToJUnitXML\Converters\Stylelint\Stylelint()
+        new \KoenVanMeijeren\ConvertToJUnitXML\Converters\Stylelint\Stylelint()
     )
 );
 $application->run();

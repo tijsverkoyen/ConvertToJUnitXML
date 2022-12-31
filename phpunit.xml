@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- https://phpunit.de/manual/current/en/appendixes.configuration.html -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         cacheResultFile="code-reports/test-results"
+         executionOrder="default"
+         resolveDependencies="true"
+         forceCoversAnnotation="false"
+         beStrictAboutCoversAnnotation="false"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTodoAnnotatedTests="true"
+         convertDeprecationsToExceptions="true"
+         failOnRisky="true"
+         failOnWarning="true"
+         colors="true"
+         verbose="true"
+    >
+
+    <testsuites>
+        <testsuite name="Project Test Suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+  <coverage cacheDirectory="code-reports/code-coverage"
+            processUncoveredFiles="true">
+    <include>
+      <directory suffix=".php">src</directory>
+    </include>
+    <report>
+      <!-- Enable this when developing locally -->
+      <!--<html outputDirectory="code-reports/coverage"/>-->
+      <text outputFile="code-reports/coverage.txt"/>
+      <clover outputFile="code-reports/clover.xml" />
+      <cobertura outputFile="code-reports/coverage.cobertura.xml" />
+    </report>
+  </coverage>
+</phpunit>

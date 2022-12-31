@@ -1,42 +1,43 @@
 <?php
 
-namespace tests\TijsVerkoyen\ConvertToJUnitXML\JUnit;
+namespace tests\KoenVanMeijeren\ConvertToJUnitXML\JUnit;
 
 use PHPUnit\Framework\TestCase;
-use TijsVerkoyen\ConvertToJUnitXML\JUnit\JUnit;
-use TijsVerkoyen\ConvertToJUnitXML\JUnit\TestSuite;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\JUnit;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\TestSuite;
 
-class JUnitTest extends TestCase
-{
-    public function testXMLGeneration(): void
-    {
-        $testSuite = new TestSuite('testsuite');
+/**
+ * Provides a class for JUnitTest.
+ *
+ * @package tests\KoenVanMeijeren\ConvertToJUnitXML\JUnit
+ */
+final class JUnitTest extends TestCase {
 
-        $jUnit = new JUnit();
-        $jUnit->addTestSuite($testSuite);
+  public function testXMLGeneration(): void {
+    $testSuite = new TestSuite('testsuite');
 
-        $node = $jUnit->toXML();
+    $jUnit = new JUnit();
+    $jUnit->addTestSuite($testSuite);
 
-        $this->assertEquals(
-            1,
-            count($node->getElementsByTagName('testsuites'))
-        );
-    }
+    $node = $jUnit->toXml();
 
-    public function testStringGeneration(): void
-    {
-        $testSuite = new TestSuite('testsuite');
+    self::assertCount(1, $node->getElementsByTagName('testsuites'));
+  }
 
-        $jUnit = new JUnit();
-        $jUnit->addTestSuite($testSuite);
+  public function testStringGeneration(): void {
+    $testSuite = new TestSuite('testsuite');
 
-        $this->assertEquals(
-            "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+    $jUnit = new JUnit();
+    $jUnit->addTestSuite($testSuite);
+
+    self::assertEquals(
+          "<?xml version=\"1.0\" encoding=\"utf-8\"?>
 <testsuites>
   <testsuite name=\"testsuite\" failures=\"0\"/>
 </testsuites>
 ",
-            (string) $jUnit
-        );
-    }
+          (string) $jUnit
+      );
+  }
+
 }

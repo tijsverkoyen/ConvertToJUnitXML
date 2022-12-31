@@ -1,66 +1,76 @@
 <?php
 
-namespace TijsVerkoyen\ConvertToJUnitXML\Converters\Npm;
+namespace KoenVanMeijeren\ConvertToJUnitXML\Converters\Npm;
 
-use TijsVerkoyen\ConvertToJUnitXML\Converters\ConverterInterface;
-use TijsVerkoyen\ConvertToJUnitXML\Converters\Npm\Report\Advisory;
-use TijsVerkoyen\ConvertToJUnitXML\Converters\Npm\Report\Report;
-use TijsVerkoyen\ConvertToJUnitXML\JUnit\Failure;
-use TijsVerkoyen\ConvertToJUnitXML\JUnit\JUnit;
-use TijsVerkoyen\ConvertToJUnitXML\JUnit\TestCase;
-use TijsVerkoyen\ConvertToJUnitXML\JUnit\TestSuite;
+use KoenVanMeijeren\ConvertToJUnitXML\Converters\ConverterInterface;
+use KoenVanMeijeren\ConvertToJUnitXML\Converters\Npm\Report\Advisory;
+use KoenVanMeijeren\ConvertToJUnitXML\Converters\Npm\Report\Report;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\Failure;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\JUnit;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\TestCase;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\TestSuite;
 
-class Audit implements ConverterInterface
-{
-    public function convert(string $input): JUnit
-    {
-        $report = Report::fromString($input);
-        $jUnit = new JUnit();
-        $testSuite = new TestSuite('npm audit');
+/**
+ * Provides a class for Audit.
+ *
+ * @package KoenVanMeijeren\ConvertToJUnitXML\Converters\Npm
+ */
+final class Audit implements ConverterInterface {
 
-        foreach ($report->getAdvisories() as $advisory) {
-            $testCase = new TestCase(
-                sprintf(
-                    '%1$s has vulnerabilities',
-                    $advisory->getPackage()
-                )
-            );
+  /**
+   * {@inheritDoc}
+   */
+  public function convert(string $input): JUnit {
+    $report = Report::fromString($input);
+    $jUnit = new JUnit();
+    $testSuite = new TestSuite('npm audit');
 
-            $testCase->addFailure(
-                new Failure(
-                    'warning',
-                    $advisory->getTitle(),
-                    $this->buildDescription($advisory)
-                )
-            );
-
-            $testSuite->addTestCase($testCase);
-        }
-
-        $jUnit->addTestSuite($testSuite);
-
-        return $jUnit;
-    }
-
-    private function buildDescription(Advisory $advisory): string
-    {
-        $description = sprintf(
-            '[%1$s] %2$s in package: %3$s',
-            $advisory->getSeverity(),
-            $advisory->getTitle(),
-            $advisory->getPackage()
+    foreach ($report->getAdvisories() as $advisory) {
+      $testCase = new TestCase(
+            sprintf(
+                '%1$s has vulnerabilities',
+                $advisory->getPackage()
+            )
         );
 
-        if (!empty($advisory->getPaths())) {
-            $description .= "\n" . 'Infected paths:';
-            foreach ($advisory->getPaths() as $path) {
-                $description .= "\n" . '* ' . $path;
-            }
-            $description .= "\n";
-        }
+      $testCase->addFailure(
+            new Failure(
+                'warning',
+                $advisory->getTitle(),
+                $this->buildDescription($advisory)
+            )
+        );
 
-        $description .= "\n" . 'More information on: ' . $advisory->getUrl();
-
-        return $description;
+      $testSuite->addTestCase($testCase);
     }
+
+    $jUnit->addTestSuite($testSuite);
+
+    return $jUnit;
+  }
+
+  /**
+   * Builds the description.
+   */
+  private function buildDescription(Advisory $advisory): string {
+    $description = sprintf(
+          '[%1$s] %2$s in package: %3$s',
+          $advisory->getSeverity(),
+          $advisory->getTitle(),
+          $advisory->getPackage()
+      );
+
+    if ($advisory->hasPaths()) {
+      $description .= "\n" . 'Infected paths:';
+      foreach ($advisory->getPaths() as $path) {
+        $description .= "\n" . '* ' . $path;
+      }
+      $description .= "\n";
+    }
+
+    $description .= "\n" . 'More information on: ' . $advisory->getUrl();
+
+    return $description;
+  }
+
 }

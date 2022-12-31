@@ -1,70 +1,79 @@
 <?php
 
-namespace TijsVerkoyen\ConvertToJUnitXML\Converters\StandardJs;
+namespace KoenVanMeijeren\ConvertToJUnitXML\Converters\StandardJs;
 
-use TijsVerkoyen\ConvertToJUnitXML\Converters\ConverterInterface;
-use TijsVerkoyen\ConvertToJUnitXML\JUnit\Failure;
-use TijsVerkoyen\ConvertToJUnitXML\JUnit\JUnit;
-use TijsVerkoyen\ConvertToJUnitXML\JUnit\TestCase;
-use TijsVerkoyen\ConvertToJUnitXML\JUnit\TestSuite;
+use KoenVanMeijeren\ConvertToJUnitXML\Converters\ConverterInterface;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\Failure;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\JUnit;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\TestCase;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\TestSuite;
 
-class StandardJs implements ConverterInterface
-{
-    public function convert(string $input): JUnit
-    {
-        $lines = explode("\n", $input);
-        $jUnit = new JUnit();
-        $testSuite = new TestSuite('standardjs');
+/**
+ * Provides a class for StandardJs.
+ *
+ * @package KoenVanMeijeren\ConvertToJUnitXML\Converters\StandardJs
+ */
+final class StandardJs implements ConverterInterface {
+  public const EXPECTED_PREG_MATCHES_COUNT = 5;
 
-        $unresolvedItems = [];
-        foreach ($lines as $line) {
-            $line = trim($line);
+  /**
+   * {@inheritDoc}
+   */
+  public function convert(string $input): JUnit {
+    $lines = explode("\n", $input);
+    $jUnit = new JUnit();
+    $testSuite = new TestSuite('standardjs');
 
-            $matches = [];
-            preg_match('|^(.*):([0-9]*):([0-9]*):(.*)$|U', $line, $matches);
+    $unresolvedItems = [];
+    foreach ($lines as $line) {
+      $line = trim($line);
 
-            if (count($matches) === 5) {
-                list($match, $path, $lineNumber, $column, $text) = $matches;
+      $matches = [];
+      preg_match('|^(.*):([0-9]*):([0-9]*):(.*)$|U', $line, $matches);
 
-                if (!array_key_exists($path, $unresolvedItems)) {
-                    $unresolvedItems[$path] = [];
-                }
+      if (count($matches) === self::EXPECTED_PREG_MATCHES_COUNT) {
+        [, $path, $lineNumber, , $text] = $matches;
 
-                $unresolvedItems[$path][$lineNumber] = $text;
-            }
+        if (!array_key_exists($path, $unresolvedItems)) {
+          $unresolvedItems[$path] = [];
         }
 
-        foreach ($unresolvedItems as $path => $failures) {
-            $testCase = new TestCase(
-                sprintf(
-                    '%1$s has unresolved items',
-                    $path
-                )
-            );
-
-            foreach ($failures as $lineNumber => $text) {
-                $testCase->addFailure(
-                    new Failure(
-                        'warning',
-                        sprintf(
-                            'Match found in %1$s on line: %2$s.',
-                            $path,
-                            $lineNumber
-                        ),
-                        sprintf(
-                            'The match is found on line %1$s in the string: %2$s',
-                            $lineNumber,
-                            trim($text)
-                        )
-                    )
-                );
-            }
-
-            $testSuite->addTestCase($testCase);
-        }
-
-        $jUnit->addTestSuite($testSuite);
-
-        return $jUnit;
+        $unresolvedItems[$path][$lineNumber] = $text;
+      }
     }
+
+    foreach ($unresolvedItems as $path => $failures) {
+      $testCase = new TestCase(
+            sprintf(
+                '%1$s has unresolved items',
+                $path
+            )
+        );
+
+      foreach ($failures as $lineNumber => $text) {
+        $testCase->addFailure(
+          new Failure(
+              'warning',
+              sprintf(
+                  'Match found in %1$s on line: %2$s.',
+                  $path,
+                  $lineNumber
+              ),
+              sprintf(
+                  'The match is found on line %1$s in the string: %2$s',
+                  $lineNumber,
+                  trim($text)
+              )
+          )
+          );
+      }
+
+      $testSuite->addTestCase($testCase);
+    }
+
+    $jUnit->addTestSuite($testSuite);
+
+    return $jUnit;
+  }
+
 }

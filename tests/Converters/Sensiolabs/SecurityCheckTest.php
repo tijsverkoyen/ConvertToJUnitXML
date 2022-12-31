@@ -1,37 +1,40 @@
 <?php
 
-namespace tests\TijsVerkoyen\ConvertToJUnitXML\Converters\Sensiolabs;
+namespace tests\KoenVanMeijeren\ConvertToJUnitXML\Converters\Sensiolabs;
 
 use PHPUnit\Framework\TestCase;
-use TijsVerkoyen\ConvertToJUnitXML\Converters\Sensiolabs\SecirtyCheck;
-use TijsVerkoyen\ConvertToJUnitXML\Converters\Sensiolabs\SecurityCheck;
+use KoenVanMeijeren\ConvertToJUnitXML\Converters\Sensiolabs\SecurityCheck;
 
-class SecurityCheckTest extends TestCase
-{
-    public function testConversion(): void
-    {
-        $securityCheck = new SecurityCheck();
-        $jUnit = $securityCheck->convert(
-            file_get_contents(
-                __DIR__ . '/../../assets/sensiolabs-security-check/multiple.json'
-            )
-        );
+/**
+ * Provides a class for SecurityCheckTest.
+ *
+ * @package tests\KoenVanMeijeren\ConvertToJUnitXML\Converters\Sensiolabs
+ */
+final class SecurityCheckTest extends TestCase {
 
-        $xml = $jUnit->toXML();
-        $this->assertCount(1, $xml->getElementsByTagName('testsuite'));
-    }
+  public function testConversion(): void {
+    $securityCheck = new SecurityCheck();
+    $jUnit = $securityCheck->convert(
+          (string) file_get_contents(
+              __DIR__ . '/../../assets/sensiolabs-security-check/multiple.json'
+          )
+      );
 
-    public function testCreationFromEmptyJson(): void
-    {
-        $securityCheck = new SecurityCheck();
-        $jUnit = $securityCheck->convert(
-            file_get_contents(
-                __DIR__ . '/../../assets/sensiolabs-security-check/empty.json'
-            )
-        );
+    $xml = $jUnit->toXml();
+    self::assertCount(1, $xml->getElementsByTagName('testsuite'));
+  }
 
-        $xml = $jUnit->toXML();
-        $this->assertCount(1, $xml->getElementsByTagName('testsuite'));
-        $this->assertCount(0, $xml->getElementsByTagName('testcase'));
-    }
+  public function testCreationFromEmptyJson(): void {
+    $securityCheck = new SecurityCheck();
+    $jUnit = $securityCheck->convert(
+          (string) file_get_contents(
+              __DIR__ . '/../../assets/sensiolabs-security-check/empty.json'
+          )
+      );
+
+    $xml = $jUnit->toXml();
+    self::assertCount(1, $xml->getElementsByTagName('testsuite'));
+    self::assertCount(0, $xml->getElementsByTagName('testcase'));
+  }
+
 }

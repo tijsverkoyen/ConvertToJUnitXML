@@ -1,22 +1,27 @@
 <?php
 
-namespace tests\TijsVerkoyen\ConvertToJUnitXML\Converters\Stylelint;
+namespace tests\KoenVanMeijeren\ConvertToJUnitXML\Converters\StandardJs;
 
 use PHPUnit\Framework\TestCase;
-use TijsVerkoyen\ConvertToJUnitXML\Converters\Standardjs\Standardjs;
+use KoenVanMeijeren\ConvertToJUnitXML\Converters\StandardJs\StandardJs;
 
-class StandardJsTest extends TestCase
-{
-    public function testConversion(): void
-    {
-        $standardJs = new StandardJs();
-        $jUnit = $standardJs->convert(
-            file_get_contents(
-                __DIR__ . '/../../assets/standard-js/multiple.txt'
-            )
-        );
+/**
+ * Provides a class for StandardJsTest.
+ *
+ * @package tests\KoenVanMeijeren\ConvertToJUnitXML\Converters\StandardJs
+ */
+final class StandardJsTest extends TestCase {
 
-        $xml = $jUnit->toXML();
-        $this->assertCount(1, $xml->getElementsByTagName('testsuite'));
-    }
+  public function testConversion(): void {
+    $standardJs = new StandardJs();
+    $jUnit = $standardJs->convert(
+          (string) file_get_contents(
+              __DIR__ . '/../../assets/standard-js/multiple.txt'
+          )
+      );
+
+    $xml = $jUnit->toXml();
+    self::assertCount(1, $xml->getElementsByTagName('testsuite'));
+  }
+
 }

@@ -1,0 +1,26 @@
+parameters:
+  level: 8
+  polluteScopeWithLoopInitialAssignments: true
+  polluteScopeWithAlwaysIterableForeach: true
+  checkAlwaysTrueInstanceof: true
+  checkAlwaysTrueStrictComparison: true
+  checkAlwaysTrueLooseComparison: true
+  checkTooWideReturnTypesInProtectedAndPublicMethods: true
+  checkDynamicProperties: true
+  checkExplicitMixedMissingReturn: true
+  checkFunctionNameCase: true
+  checkInternalClassCaseSensitivity: true
+  reportMaybesInMethodSignatures: true
+  reportStaticMethodSignatures: false
+  reportMaybesInPropertyPhpDocTypes: true
+  strictRules:
+  		allRules: true
+  paths:
+    - src
+    - tests
+  excludePaths:
+    - vendor
+  parallel:
+    processTimeout: 300.0
+  customRulesetUsed: true
+  reportUnmatchedIgnoredErrors: true

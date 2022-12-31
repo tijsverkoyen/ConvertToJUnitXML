@@ -1,10 +1,22 @@
 <?php
 
-namespace TijsVerkoyen\ConvertToJUnitXML\Converters;
+namespace KoenVanMeijeren\ConvertToJUnitXML\Converters;
 
-use TijsVerkoyen\ConvertToJUnitXML\JUnit\JUnit;
+use KoenVanMeijeren\ConvertToJUnitXML\JUnit\JUnit;
 
-interface ConverterInterface
-{
-    public function convert(string $input): JUnit;
+/**
+ * Provides an interface for ConverterInterface.
+ *
+ * @package KoenVanMeijeren\ConvertToJUnitXML\Converters
+ */
+interface ConverterInterface {
+
+  /**
+   * Converts the input to JUnit.
+   *
+   * @throws \JsonException
+   * @throws \KoenVanMeijeren\ConvertToJUnitXML\Converters\Exceptions\InvalidInputException
+   */
+  public function convert(string $input): JUnit;
+
 }

@@ -1,68 +1,84 @@
 <?php
 
-namespace TijsVerkoyen\ConvertToJUnitXML\Command;
+namespace KoenVanMeijeren\ConvertToJUnitXML\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use TijsVerkoyen\ConvertToJUnitXML\Converters\ConverterInterface;
+use KoenVanMeijeren\ConvertToJUnitXML\Converters\ConverterInterface;
 
-class ConvertNpmAuditCommand extends Command
-{
-    /**
-     * @var ConverterInterface
-     */
-    private $converter;
+/**
+ * Provides a class for ConvertNpmAuditCommand.
+ *
+ * @package KoenVanMeijeren\ConvertToJUnitXML\Command
+ */
+final class ConvertNpmAuditCommand extends Command {
+  public const INPUT_LENGTH_MAXIMUM = 1024;
 
-    public function __construct(ConverterInterface $converter)
-    {
-        $this->converter = $converter;
+  /**
+   * Constructs a new object.
+   */
+  public function __construct(
+        private ConverterInterface $converter
+    ) {
+    parent::__construct();
+  }
 
-        parent::__construct();
+  /**
+   * {@inheritDoc}
+   */
+  protected function configure(): void {
+    $this
+      ->setName('convert:npm-audit')
+      ->setDescription(
+              'Convert the output of npm audit --json to JUnit XML.'
+          )
+      ->addArgument(
+              'input',
+              InputArgument::OPTIONAL,
+              "The JSON to convert"
+          );
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @throws \JsonException
+   * @throws \KoenVanMeijeren\ConvertToJUnitXML\Converters\Exceptions\InvalidInputException
+   */
+  protected function execute(InputInterface $input, OutputInterface $output): int {
+    $inputContent = $this->getContentFromInput($input);
+
+    $jUnitReport = $this->converter->convert($inputContent);
+    $output->write($jUnitReport->__toString());
+    if ($jUnitReport->hasFailures()) {
+      return self::FAILURE;
     }
 
-    protected function configure()
-    {
-        $this
-            ->setName('convert:npm-audit')
-            ->setDescription(
-                'Convert the output of npm audit --json to JUnit XML.'
-            )
-            ->addArgument(
-                'input',
-                InputArgument::OPTIONAL,
-                "The JSON to convert"
-            );
+    return self::SUCCESS;
+  }
+
+  /**
+   * Gets the content from the input.
+   */
+  protected function getContentFromInput(InputInterface $input): string {
+    if ($input->hasArgument('input')
+          && $input->getArgument('input') !== NULL
+          && $input->getArgument('input') !== '') {
+      return $input->getArgument('input');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
-        if ($input->hasArgument('input')
-            && $input->getArgument('input') !== null
-            && $input->getArgument('input') !== ''
-        ) {
-            $inputContent = $input->getArgument('input');
-        } else if (0 !== ftell(STDIN)) {
-            return 1;
-        } else {
-            $inputContent = '';
-
-            while (!feof(STDIN)) {
-                $inputContent .= fread(STDIN, 1024);
-            }
-        }
-
-        $jUnitReport = $this->converter->convert(
-            $inputContent
-        );
-
-        $output->write($jUnitReport->__toString());
-
-        if ($jUnitReport->hasFailures()) {
-            return 1;
-        }
-
-        return 0;
+    if (0 !== ftell(STDIN)) {
+      return (string) self::FAILURE;
     }
+
+    $inputContent = '';
+    while (!feof(STDIN)) {
+      $inputContent .= fread(STDIN, self::INPUT_LENGTH_MAXIMUM);
+    }
+
+    return $inputContent;
+  }
+
 }
