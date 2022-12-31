@@ -26,6 +26,13 @@ final class TestCase {
   }
 
   /**
+   * Gets the Name.
+   */
+  public function getName(): string {
+    return $this->name;
+  }
+
+  /**
    * Adds a failure.
    */
   public function addFailure(Failure $failure): TestCase {

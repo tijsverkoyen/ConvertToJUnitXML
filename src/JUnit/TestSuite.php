@@ -27,11 +27,28 @@ final class TestSuite {
   }
 
   /**
+   * Gets the Name.
+   */
+  public function getName(): string {
+    return $this->name;
+  }
+
+  /**
    * Adds a test case.
    */
   public function addTestCase(TestCase $testCase): TestSuite {
     $this->testCases[] = $testCase;
     return $this;
+  }
+
+  /**
+   * Gets the test cases.
+   *
+   * @return TestCase[]
+   *   The test cases.
+   */
+  public function getTestCases(): array {
+    return $this->testCases;
   }
 
   /**

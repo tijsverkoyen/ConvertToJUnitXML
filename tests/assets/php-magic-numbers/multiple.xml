@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<phpmnd version="3.0.1" fileCount="2" errorCount="3">
+  <files>
+    <file path="Interfaces/Controllers/ChatController.php" errors="2">
+      <entry line="39" start="12" end="13">
+        <snippet><![CDATA[        if (2 > 3) {]]></snippet>
+        <suggestions/>
+      </entry>
+      <entry line="39" start="16" end="17">
+        <snippet><![CDATA[        if (2 > 3) {]]></snippet>
+        <suggestions/>
+      </entry>
+    </file>
+    <file path="Domain/Chat/Repository/ChatRepository.php" errors="1">
+      <entry line="67" start="29" end="31">
+        <snippet><![CDATA[            ->paginate(page: 32);]]></snippet>
+        <suggestions/>
+      </entry>
+    </file>
+  </files>
+</phpmnd>

@@ -22,6 +22,27 @@ final class Failure {
   }
 
   /**
+   * Gets the Type.
+   */
+  public function getType(): string {
+    return $this->type;
+  }
+
+  /**
+   * Gets the Message.
+   */
+  public function getMessage(): string {
+    return $this->message;
+  }
+
+  /**
+   * Gets the Description.
+   */
+  public function getDescription(): string {
+    return $this->description;
+  }
+
+  /**
    * Renders the data to XML.
    */
   public function toXml(\DOMDocument $document): \DOMNode {

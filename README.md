@@ -14,12 +14,12 @@ Usage
 ------
 This is an example of how you can use this command.
 ``` shell
-cat <your_file> | php convert-to-junit-xml <converter>
+php convert-to-junit-xml <chosen_converter> <input>
 ```
 
 Save output
 -----------
 This is an example of how you can use this command and save the output.
 ``` shell
-cat <your_file> | php convert-to-junit-xml <converter> > <your_file_name>.xml
+php convert-to-junit-xml file-to-converter <input_file> <chosen_converter> <output_file>
 ```

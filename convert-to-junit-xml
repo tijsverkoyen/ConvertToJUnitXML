@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-function includeIfExists($file): mixed
+function includeIfExists(string $file): mixed
 {
     if (!file_exists($file)) {
         return null;
@@ -23,6 +23,15 @@ if (!$loader instanceof \Composer\Autoload\ClassLoader) {
     );
 }
 
+use KoenVanMeijeren\ConvertToJUnitXML\Command\ConvertBashGrepCommand;
+use KoenVanMeijeren\ConvertToJUnitXML\Command\ConvertPhpMagicNumbersCommand;
+use KoenVanMeijeren\ConvertToJUnitXML\Command\FileToConverterBridgeCommand;
+use KoenVanMeijeren\ConvertToJUnitXML\Converters\Bash\Grep;
+use KoenVanMeijeren\ConvertToJUnitXML\Converters\Npm\Audit;
+use KoenVanMeijeren\ConvertToJUnitXML\Converters\PhpMagicNumbers\PhpMagicNumbersConverter;
+use KoenVanMeijeren\ConvertToJUnitXML\Converters\Sensiolabs\SecurityCheck;
+use KoenVanMeijeren\ConvertToJUnitXML\Converters\StandardJs\StandardJs;
+use KoenVanMeijeren\ConvertToJUnitXML\Converters\Stylelint\Stylelint;
 use Symfony\Component\Console\Application;
 use KoenVanMeijeren\ConvertToJUnitXML\Command\ConvertNpmAuditCommand;
 use KoenVanMeijeren\ConvertToJUnitXML\Command\ConvertSensiolabsSecurityCheckCommand;
@@ -30,29 +39,12 @@ use KoenVanMeijeren\ConvertToJUnitXML\Command\ConvertStandardJsCommand;
 use KoenVanMeijeren\ConvertToJUnitXML\Command\ConvertStylelintCommand;
 
 $application = new Application('Convert to JUnit XML');
-$application->add(
-    new \KoenVanMeijeren\ConvertToJUnitXML\Command\ConvertBashGrepCommand(
-        new \KoenVanMeijeren\ConvertToJUnitXML\Converters\Bash\Grep()
-    )
-);
-$application->add(
-    new ConvertNpmAuditCommand(
-        new \KoenVanMeijeren\ConvertToJUnitXML\Converters\Npm\Audit()
-    )
-);
-$application->add(
-    new ConvertSensiolabsSecurityCheckCommand(
-        new \KoenVanMeijeren\ConvertToJUnitXML\Converters\Sensiolabs\SecurityCheck()
-    )
-);
-$application->add(
-    new ConvertStandardJsCommand(
-        new \KoenVanMeijeren\ConvertToJUnitXML\Converters\StandardJs\StandardJs()
-    )
-);
-$application->add(
-    new ConvertStylelintCommand(
-        new \KoenVanMeijeren\ConvertToJUnitXML\Converters\Stylelint\Stylelint()
-    )
-);
+$application->add(new ConvertBashGrepCommand(new Grep()));
+$application->add(new ConvertNpmAuditCommand(new Audit()));
+$application->add(new ConvertSensiolabsSecurityCheckCommand(new SecurityCheck()));
+$application->add(new ConvertStandardJsCommand(new StandardJs()));
+$application->add(new ConvertStylelintCommand(new Stylelint()));
+$application->add(new ConvertPhpMagicNumbersCommand(new PhpMagicNumbersConverter()));
+$application->add(new FileToConverterBridgeCommand());
+
 $application->run();

@@ -28,6 +28,16 @@ final class JUnit {
   }
 
   /**
+   * Gets the test suites.
+   *
+   * @return TestSuite[]
+   *   The test suites.
+   */
+  public function getTestSuites(): array {
+    return $this->testSuites;
+  }
+
+  /**
    * Determines if there are failures.
    */
   public function hasFailures(): bool {

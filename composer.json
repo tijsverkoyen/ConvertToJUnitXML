@@ -11,6 +11,7 @@
     "require": {
         "php": "^8.0",
         "ext-dom": "*",
+        "ext-simplexml": "*",
         "symfony/console": "^6.0"
     },
     "bin": [
@@ -59,7 +60,8 @@
             "./vendor/bin/phpmd src text phpmd.xml",
             "./vendor/bin/phpmd tests text phpmd.xml"
         ],
-        "test:phpmnd": "vendor/bin/phpmnd src --include-numeric-string --progress --extensions=all"
+        "test:phpmnd": "vendor/bin/phpmnd src --include-numeric-string --progress --extensions=all",
+        "test-report:phpmnd": "vendor/bin/phpmnd src/ --progress --extensions=all --xml-output=code-reports/phpmnd-report.xml"
     },
     "config": {
         "allow-plugins": {
