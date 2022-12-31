@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace KoenVanMeijeren\ConvertToJUnitXML\Converters\Npm\Report;
 
 use KoenVanMeijeren\ConvertToJUnitXML\Helpers\JsonHelper;

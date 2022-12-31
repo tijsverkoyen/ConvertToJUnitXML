@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace KoenVanMeijeren\ConvertToJUnitXML\Command;
 
 use Symfony\Component\Console\Command\Command;
@@ -14,7 +16,7 @@ use KoenVanMeijeren\ConvertToJUnitXML\Converters\ConverterInterface;
  * @package KoenVanMeijeren\ConvertToJUnitXML\Command
  */
 final class ConvertNpmAuditCommand extends Command {
-  public const INPUT_LENGTH_MAXIMUM = 1024;
+  public const INPUT_LENGTH_MAXIMUM = 1_024;
 
   /**
    * Constructs a new object.

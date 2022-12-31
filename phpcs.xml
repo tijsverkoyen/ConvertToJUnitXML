@@ -11,4 +11,49 @@
     <arg name="extensions" value="php"/>
 
     <file>src</file>
+
+  <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses"/>
+  <rule ref="SlevomatCodingStandard.Variables"/>
+  <rule ref="SlevomatCodingStandard.Exceptions">
+    <exclude name="SlevomatCodingStandard.Exceptions.DisallowNonCapturingCatch.DisallowedNonCapturingCatch" />
+  </rule>
+  <rule ref="SlevomatCodingStandard.TypeHints">
+    <exclude name="SlevomatCodingStandard.TypeHints.DeclareStrictTypes.IncorrectStrictTypesFormat" />
+    <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint" />
+    <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint" />
+    <exclude name="SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint.DisallowedMixedTypeHint" />
+    <exclude name="SlevomatCodingStandard.TypeHints.DisallowArrayTypeHintSyntax.DisallowedArrayTypeHintSyntax" />
+  </rule>
+
+  <rule ref="SlevomatCodingStandard.Classes.ClassStructure">
+    <properties>
+      <property name="groups" type="array">
+        <element value="uses"/>
+        <element value="enum cases"/>
+
+        <!-- Public constants are first, but you don't care about the order of protected or private constants -->
+        <element value="public constants"/>
+        <element value="constants"/>
+
+        <!-- You don't care about the order among the properties. The same can be done with "properties" shortcut -->
+        <element value="public properties, protected properties, private properties, public static properties, protected static properties, private static properties"/>
+
+        <!-- Constructor is first, then all public methods, then protected/private methods and magic methods are last -->
+        <element value="constructor"/>
+        <element value="all public methods"/>
+        <element value="methods"/>
+        <element value="magic methods"/>
+      </property>
+    </properties>
+  </rule>
+
+  <rule ref="SlevomatCodingStandard.Classes.ClassConstantVisibility"/>
+  <rule ref="SlevomatCodingStandard.Classes.RequireAbstractOrFinal"/>
+  <rule ref="SlevomatCodingStandard.Classes.UselessLateStaticBinding"/>
+
+  <rule ref="SlevomatCodingStandard.PHP"/>
+  <rule ref="SlevomatCodingStandard.Numbers">
+    <exclude name="SlevomatCodingStandard.Numbers.DisallowNumericLiteralSeparator.DisallowedNumericLiteralSeparator" />
+  </rule>
+
 </ruleset>

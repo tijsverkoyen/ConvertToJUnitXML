@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace KoenVanMeijeren\ConvertToJUnitXML\Converters;
 
 use KoenVanMeijeren\ConvertToJUnitXML\JUnit\JUnit;

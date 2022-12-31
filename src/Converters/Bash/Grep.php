@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace KoenVanMeijeren\ConvertToJUnitXML\Converters\Bash;
 
 use KoenVanMeijeren\ConvertToJUnitXML\Converters\ConverterInterface;

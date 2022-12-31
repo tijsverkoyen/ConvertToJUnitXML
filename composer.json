@@ -28,7 +28,8 @@
         "phpmd/phpmd": "^2.13",
         "phpstan/extension-installer": "^1.2",
         "povils/phpmnd": "^3.0",
-        "drupal/coder": "^8.3"
+        "drupal/coder": "^8.3",
+        "slevomat/coding-standard": "^8.7"
     },
     "autoload": {
         "psr-4": {
